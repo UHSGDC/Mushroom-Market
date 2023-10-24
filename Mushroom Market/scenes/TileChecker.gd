@@ -46,10 +46,12 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 		
 		var tile_pos := layer.local_to_map(layer.get_local_mouse_position())
 		var offset_tile_pos := layer.local_to_map(layer.get_local_mouse_position() + Vector2.UP * tile_size / 2)
-		if layer.get_cell_source_id(0, tile_pos) != -1 or i == layer_list.size() - 1:
+		if layer.get_cell_source_id(0, tile_pos) != -1:
 			_current_tile = tile_pos
 		elif layer.get_cell_source_id(0, offset_tile_pos) != -1:
 			_current_tile = offset_tile_pos
+		elif i == layer_list.size() - 1:
+			_current_tile = tile_pos
 		else:
 			continue
 		
@@ -57,5 +59,4 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 		$Polygon2D.global_position = _current_tile * tile_size + offset
 		return layer_list.size() - 1 - i
 	
-	# add selection for blank tiles here
 	return 0
