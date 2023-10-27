@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Mushroom Market"
-run/main_scene="res://Main.tscn"
+config/tags=PackedStringArray("gdc")
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 

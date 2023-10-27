@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8yis865pj4an"]
+[gd_scene load_steps=3 format=3 uid="uid://dt7wrchnkcgg7"]
 
-[ext_resource type="PackedScene" uid="uid://dspnenkanqb3f" path="res://Scenes/Garden.tscn" id="1_wvwpi"]
-[ext_resource type="PackedScene" uid="uid://cm8ygqjm7d1v0" path="res://Scenes/Menus.tscn" id="2_ubqli"]
+[ext_resource type="PackedScene" uid="uid://bs0h5lcmuv6fl" path="res://Scenes/garden.tscn" id="1_w66gk"]
+[ext_resource type="PackedScene" uid="uid://cm8ygqjm7d1v0" path="res://Scenes/menus.tscn" id="2_mn65f"]
 
 [node name="Main" type="Node"]
 
@@ -22,7 +22,7 @@ size_2d_override = Vector2i(240, 180)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
-[node name="Garden" parent="World/SubViewport" instance=ExtResource("1_wvwpi")]
+[node name="Garden" parent="World/SubViewport" instance=ExtResource("1_w66gk")]
 scale = Vector2(1, 1)
 
-[node name="Menus" parent="." instance=ExtResource("2_ubqli")]
+[node name="Menus" parent="." instance=ExtResource("2_mn65f")]
