@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://c4gap32muuhr5"]
+[gd_scene load_steps=18 format=3 uid="uid://cig57j110r6n8"]
 
-[ext_resource type="Texture2D" uid="uid://dirlr3k260oyk" path="res://Art/mushroomtest.png" id="1_2gt6p"]
+[ext_resource type="Texture2D" uid="uid://dirlr3k260oyk" path="res://art/mushroomtest.png" id="1_l7sf2"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="2_y150p"]
-[ext_resource type="Texture2D" uid="uid://b1tqu2qjibhs4" path="res://Art/Checked.png" id="3_wlb4d"]
-[ext_resource type="Texture2D" uid="uid://dvcoor5xpi2t8" path="res://Art/Unchecked.png" id="4_t4v5k"]
+[ext_resource type="Texture2D" uid="uid://b1tqu2qjibhs4" path="res://art/Checked.png" id="3_sa1sj"]
+[ext_resource type="Texture2D" uid="uid://dvcoor5xpi2t8" path="res://art/Unchecked.png" id="4_64ry3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vxf2"]
 
@@ -32,7 +32,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4obw"]
 
 [node name="Inventory" type="HSplitContainer"]
-visible = false
+custom_minimum_size = Vector2(472, 80)
 split_offset = 150
 dragger_visibility = 1
 
@@ -68,7 +68,7 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_2gt6p")
+texture = ExtResource("1_l7sf2")
 expand_mode = 1
 stretch_mode = 5
 
@@ -94,10 +94,10 @@ theme_override_constants/h_separation = 0
 theme_override_constants/check_v_offset = 4
 theme_override_fonts/font = ExtResource("2_y150p")
 theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("3_wlb4d")
-theme_override_icons/checked_disabled = ExtResource("3_wlb4d")
-theme_override_icons/unchecked = ExtResource("4_t4v5k")
-theme_override_icons/unchecked_disabled = ExtResource("4_t4v5k")
+theme_override_icons/checked = ExtResource("3_sa1sj")
+theme_override_icons/checked_disabled = ExtResource("3_sa1sj")
+theme_override_icons/unchecked = ExtResource("4_64ry3")
+theme_override_icons/unchecked_disabled = ExtResource("4_64ry3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_by83x")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_i6ts1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_aaxss")
@@ -112,10 +112,10 @@ theme_override_constants/h_separation = 0
 theme_override_constants/check_v_offset = 4
 theme_override_fonts/font = ExtResource("2_y150p")
 theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("3_wlb4d")
-theme_override_icons/checked_disabled = ExtResource("3_wlb4d")
-theme_override_icons/unchecked = ExtResource("4_t4v5k")
-theme_override_icons/unchecked_disabled = ExtResource("4_t4v5k")
+theme_override_icons/checked = ExtResource("3_sa1sj")
+theme_override_icons/checked_disabled = ExtResource("3_sa1sj")
+theme_override_icons/unchecked = ExtResource("4_64ry3")
+theme_override_icons/unchecked_disabled = ExtResource("4_64ry3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulqy")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4dd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_njmdu")
@@ -130,10 +130,10 @@ theme_override_constants/h_separation = 0
 theme_override_constants/check_v_offset = 4
 theme_override_fonts/font = ExtResource("2_y150p")
 theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("3_wlb4d")
-theme_override_icons/checked_disabled = ExtResource("3_wlb4d")
-theme_override_icons/unchecked = ExtResource("4_t4v5k")
-theme_override_icons/unchecked_disabled = ExtResource("4_t4v5k")
+theme_override_icons/checked = ExtResource("3_sa1sj")
+theme_override_icons/checked_disabled = ExtResource("3_sa1sj")
+theme_override_icons/unchecked = ExtResource("4_64ry3")
+theme_override_icons/unchecked_disabled = ExtResource("4_64ry3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulqy")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4dd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_njmdu")
@@ -149,10 +149,10 @@ theme_override_constants/h_separation = 0
 theme_override_constants/check_v_offset = 4
 theme_override_fonts/font = ExtResource("2_y150p")
 theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("3_wlb4d")
-theme_override_icons/checked_disabled = ExtResource("3_wlb4d")
-theme_override_icons/unchecked = ExtResource("4_t4v5k")
-theme_override_icons/unchecked_disabled = ExtResource("4_t4v5k")
+theme_override_icons/checked = ExtResource("3_sa1sj")
+theme_override_icons/checked_disabled = ExtResource("3_sa1sj")
+theme_override_icons/unchecked = ExtResource("4_64ry3")
+theme_override_icons/unchecked_disabled = ExtResource("4_64ry3")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulqy")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4dd6")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_njmdu")
