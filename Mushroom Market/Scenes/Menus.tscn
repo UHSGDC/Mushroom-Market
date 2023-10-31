@@ -40,13 +40,13 @@ theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/panel = SubResource("StyleBoxFlat_eo31l")
 
 [node name="Shop" type="Label" parent="."]
-visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aoww2")
 theme_override_font_sizes/font_size = 13
 text = "Would you like to buy 1 red mushroom for 14 dollars?"
 
 [node name="Inventory" parent="." instance=ExtResource("2_86wtx")]
+visible = false
 layout_mode = 2
 
 [node name="Info" type="Label" parent="."]

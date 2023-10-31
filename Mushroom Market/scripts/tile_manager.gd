@@ -1,8 +1,9 @@
 extends Node2D
-class_name TileChecker
+class_name TileManager
 
 @export var layers: Array[TileMap]
 
+var tile: ItemData = null
 var _layer_index: int
 var _current_tile: Vector2i
 
@@ -12,6 +13,7 @@ var _current_tile: Vector2i
 
 func _ready() -> void:
 	_layers_reversed.reverse()
+	Global.item_selected.connect(_on_item_selected)
 
 
 func _process(delta: float) -> void:
@@ -20,22 +22,27 @@ func _process(delta: float) -> void:
 		place_tile_at_mouse(_layer_index, layers.duplicate())
 	elif Input.is_action_just_pressed("remove"):
 		delete_tile_at_mouse(_layer_index, layers.duplicate())
-	
 
-func place_tile_at_mouse(index: int, layer_list: Array[TileMap]) -> void:
-	var layer := layer_list[index]
+
+func _on_item_selected(item: Items.ID) -> void:
+	tile = Items.get_item_data(item)
+	$Preview.texture = tile.place_texture if tile != null else null
+
+
+func place_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
+	var layer := layer_list[layer_index]
 	if layer.get_cell_source_id(0, _current_tile) == -1:
 		layer.set_cell(0, _current_tile, 3, Vector2i(0, 0))
 		return
 	
-	if index + 1 >= layer_list.size():
+	if layer_index + 1 >= layer_list.size():
 		return
-	var layer_above := layer_list[index + 1]
+	var layer_above := layer_list[layer_index + 1]
 	layer_above.set_cell(0, _current_tile, 3, Vector2i(0, 0))
 	
 	
-func delete_tile_at_mouse(index: int, layer_list: Array[TileMap]) -> void:
-	var layer := layer_list[index]
+func delete_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
+	var layer := layer_list[layer_index]
 	
 	layer.set_cell(0, _current_tile, -1)
 
@@ -56,7 +63,7 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 			continue
 		
 		var offset := Vector2i.UP * (tile_size / 2 * (layer_list.size() - i - 1))
-		$Polygon2D.global_position = _current_tile * tile_size + offset
+		$Preview.global_position = _current_tile * tile_size + offset
 		return layer_list.size() - 1 - i
 	
 	return 0

@@ -1,11 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://cig57j110r6n8"]
 
-[ext_resource type="Texture2D" uid="uid://dirlr3k260oyk" path="res://art/mushroomtest.png" id="1_l7sf2"]
+[ext_resource type="PackedScene" uid="uid://bcjg5cdb3fofh" path="res://scenes/inventory_item.tscn" id="1_cnmdk"]
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_ktnng"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="2_y150p"]
 [ext_resource type="Texture2D" uid="uid://b1tqu2qjibhs4" path="res://art/Checked.png" id="3_sa1sj"]
 [ext_resource type="Texture2D" uid="uid://dvcoor5xpi2t8" path="res://art/Unchecked.png" id="4_64ry3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vxf2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by83x"]
 
@@ -35,53 +34,30 @@
 custom_minimum_size = Vector2(472, 80)
 split_offset = 150
 dragger_visibility = 1
+script = ExtResource("1_ktnng")
+ITEM_SCENE = ExtResource("1_cnmdk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.709804, 0.737255, 1, 1)
 
-[node name="Items" type="ScrollContainer" parent="ColorRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = 2.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect/Items"]
+[node name="ItemContainer" type="GridContainer" parent="ColorRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 9
-
-[node name="Item" type="PanelContainer" parent="ColorRect/Items/GridContainer"]
-texture_filter = 5
-custom_minimum_size = Vector2(36, 36)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7vxf2")
-
-[node name="Icon" type="TextureRect" parent="ColorRect/Items/GridContainer/Item"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("1_l7sf2")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="ColorRect/Items/GridContainer/Item"]
-custom_minimum_size = Vector2(15, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("2_y150p")
-theme_override_font_sizes/font_size = 13
-text = "x10"
-horizontal_alignment = 2
-vertical_alignment = 2
+columns = 7
 
 [node name="Filters" type="VBoxContainer" parent="."]
 layout_mode = 2
