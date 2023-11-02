@@ -1,16 +1,14 @@
-extends Resource
-
-class_name ItemData
+class_name ItemData extends Resource
 
 @export var name: String
 @export var id: Items.ID
-@export var use_mode: Items.Use
+@export var use_tags: Array[Items.Use]
+@export var place_mode: TileManager.Mode
+@export var tile_id: int
 @export var raw_texture: Texture : set = _set_raw_texture
-		
+
 var item_texture: AtlasTexture = AtlasTexture.new()
 var place_texture: AtlasTexture = AtlasTexture.new()
-
-@export var tile_id: int
 
 
 func _set_raw_texture(value: Texture) -> void:

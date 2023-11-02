@@ -7,6 +7,7 @@
 script = ExtResource("1_i76mx")
 name = "Dirt"
 id = 60
-use_mode = 1
-raw_texture = ExtResource("1_pjucw")
+use_tags = Array[int]([0])
+place_mode = 1
 tile_id = 3
+raw_texture = ExtResource("1_pjucw")

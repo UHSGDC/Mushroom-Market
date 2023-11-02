@@ -7,6 +7,7 @@
 script = ExtResource("1_7jgoh")
 name = "Mushroom"
 id = 70
-use_mode = 1
-raw_texture = ExtResource("1_3may3")
+use_tags = Array[int]([0])
+place_mode = 0
 tile_id = 4
+raw_texture = ExtResource("1_3may3")
