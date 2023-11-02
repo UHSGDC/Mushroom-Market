@@ -1,18 +1,18 @@
-extends HSplitContainer
-class_name Inventory
+class_name Inventory extends HSplitContainer
 
-@export var ITEM_SCENE: PackedScene
+@export var item_scene: PackedScene
 
-@onready var ITEM_CONTAINER = $ColorRect/ScrollContainer/ItemContainer
+@onready var item_container = $ColorRect/ScrollContainer/ItemContainer
 
 func _ready() -> void:
-	add_items(Items.ID.DIRT, 1)
-	add_items(Items.ID.MUSHROOM, 2)
-	add_items(Items.ID.COMPOSTER, 3)
+	Global.change_inventory_item = change_item
+	change_item(Items.ID.DIRT, 1)
+	change_item(Items.ID.MUSHROOM, 2)
+	change_item(Items.ID.COMPOSTER, 3)
 
 
-func add_items(id: Items.ID, count: int) -> void:
-	for item in ITEM_CONTAINER.get_children():
+func change_item(id: Items.ID, count: int) -> void:
+	for item in item_container.get_children():
 		if id == item.id:
 			item.count += count
 			return
@@ -21,6 +21,6 @@ func add_items(id: Items.ID, count: int) -> void:
 
 
 func _new_item(id: Items.ID, count: int) -> void:
-	var item: InventoryItem = ITEM_SCENE.instantiate()
-	ITEM_CONTAINER.add_child(item)
+	var item: InventoryItem = item_scene.instantiate()
+	item_container.add_child(item)
 	item.initiliaze(id, count)

@@ -35,7 +35,7 @@ custom_minimum_size = Vector2(472, 80)
 split_offset = 150
 dragger_visibility = 1
 script = ExtResource("1_ktnng")
-ITEM_SCENE = ExtResource("1_cnmdk")
+item_scene = ExtResource("1_cnmdk")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
