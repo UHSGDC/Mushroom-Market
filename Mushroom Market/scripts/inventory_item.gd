@@ -1,11 +1,12 @@
-extends PanelContainer
-class_name InventoryItem
+class_name InventoryItem extends PanelContainer
 
 var count: int = 0:
 	set(value):
 		count = value
 		$Count.text = "x" + str(value)
 		visible = count > 0
+		if !visible:
+			Global.item_selected.emit(-1)
 
 var id: Items.ID
 var item_data: ItemData
