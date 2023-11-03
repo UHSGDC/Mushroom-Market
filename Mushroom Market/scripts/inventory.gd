@@ -6,7 +6,7 @@ class_name Inventory extends HSplitContainer
 
 func _ready() -> void:
 	Global.change_inventory_item = change_item
-	change_item(Items.ID.DIRT, 1)
+	change_item(Items.ID.DIRT, 10)
 	change_item(Items.ID.MUSHROOM, 2)
 	change_item(Items.ID.COMPOSTER, 3)
 
