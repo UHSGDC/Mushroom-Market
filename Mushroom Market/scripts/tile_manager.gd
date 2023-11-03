@@ -15,17 +15,21 @@ enum Mode {
 @export var layers: Array[TileMap]
 
 var tile: ItemData = null
-		
-var _layer_index: int
-var _current_tile: Vector2i
-var _is_tile_valid: bool = false
-
 var mode: Mode = Mode.SELECT :
 	set(value):
 		mode = value
-		$Preview.mode = value
+		preview.mode = value
+		
+var _layer_index: int : 
+	set(value):
+		_layer_index = value
+		preview.layer_index = value
+		
+var _current_tile: Vector2i
+var _is_tile_valid: bool = false
 
 @onready var _tile_size: int = layers[0].tile_set.tile_size.x
+@onready var preview: Sprite2D = $Preview
 
 
 func _ready() -> void:
@@ -42,14 +46,14 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_item_selected(item: Items.ID) -> void:
-	$Preview.texture = null
+	preview.texture = null
 	mode = Mode.SELECT
 	tile = Items.get_item_data(item)
 	if !tile:
 		return
 		
 	if tile.use_tags.has(Items.Use.TILEMAP):
-		$Preview.texture = tile.place_texture
+		preview.texture = tile.place_texture
 		mode = tile.place_mode
 
 
@@ -101,12 +105,12 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 				else:
 					continue
 			Mode.SOIL:
-				if Items.is_dirt(tile_item_id) and tile_above_id == -1:
+				if Items.is_dirt(tile_item_id) and (tile_above_id < 0 or Items.is_mushroom(Items.get_id_from_tile(tile_above_id))):
 					_current_tile = tile_pos
 				else:
 					continue
 			Mode.PATH:
-				if Items.is_dirt(tile_item_id) and tile_above_id == -1 and !Items.is_mushroom(Items.get_id_from_tile(tile_above_id)):
+				if Items.is_dirt(tile_item_id) and tile_above_id < 0:
 					_current_tile = tile_pos
 				else:
 					continue
@@ -134,11 +138,11 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 			Mode.NONE:
 				continue
 		var offset := Vector2i.UP * (tile_size / 2 * i)
-		$Preview.show()
+		preview.show()
 		_is_tile_valid = true
-		$Preview.global_position = _current_tile * tile_size + offset
+		preview.global_position = _current_tile * tile_size + offset
 		return i
 	
-	$Preview.hide()
+	preview.hide()
 	_is_tile_valid = false
 	return -1
