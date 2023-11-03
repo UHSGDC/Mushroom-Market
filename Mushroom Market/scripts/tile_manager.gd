@@ -20,13 +20,15 @@ var _layer_index: int
 var _current_tile: Vector2i
 var _is_tile_valid: bool = false
 
-var mode: Mode = Mode.SELECT
+var mode: Mode = Mode.SELECT :
+	set(value):
+		mode = value
+		$Preview.mode = value
 
 @onready var _tile_size: int = layers[0].tile_set.tile_size.x
 
 
 func _ready() -> void:
-	print(layers.size())
 	Global.item_selected.connect(_on_item_selected)
 
 
@@ -46,7 +48,6 @@ func _on_item_selected(item: Items.ID) -> void:
 	if !tile:
 		return
 		
-	print(tile.name)
 	if tile.use_tags.has(Items.Use.TILEMAP):
 		$Preview.texture = tile.place_texture
 		mode = tile.place_mode
@@ -131,7 +132,7 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 				else:
 					continue
 			Mode.NONE:
-				print("mode is none lmao lol rofl xD")
+				continue
 		var offset := Vector2i.UP * (tile_size / 2 * i)
 		$Preview.show()
 		_is_tile_valid = true

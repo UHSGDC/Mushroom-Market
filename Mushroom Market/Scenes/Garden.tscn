@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1r0b3dau4ln3"]
+[gd_scene load_steps=4 format=3 uid="uid://b1r0b3dau4ln3"]
 
 [ext_resource type="TileSet" uid="uid://cp5qk6fenyhap" path="res://garden_tileset.tres" id="1_tgygg"]
+[ext_resource type="Script" path="res://scripts/tile_preview.gd" id="3_2pwkn"]
 [ext_resource type="Script" path="res://scripts/tile_manager.gd" id="3_83euq"]
 
 [node name="Garden" type="Node2D"]
@@ -60,6 +61,7 @@ layers = [NodePath("../Layer0"), NodePath("../Layer1"), NodePath("../Layer2"), N
 [node name="Preview" type="Sprite2D" parent="TileManager"]
 show_behind_parent = true
 offset = Vector2(4, 6)
+script = ExtResource("3_2pwkn")
 
 [node name="Top" type="Polygon2D" parent="TileManager/Preview"]
 modulate = Color(0, 0, 0, 1)
