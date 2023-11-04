@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://de5v7uln82tw1"]
+
+[ext_resource type="Texture2D" uid="uid://dr0d8rh7pe1oy" path="res://art/Cauldron.png" id="1_djf5c"]
+[ext_resource type="Script" path="res://scripts/item_data.gd" id="1_os2ro"]
+
+[resource]
+script = ExtResource("1_os2ro")
+name = "Cauldron"
+id = 10
+use_tags = Array[int]([0])
+place_mode = 5
+tile_id = 0
+raw_texture = ExtResource("1_djf5c")

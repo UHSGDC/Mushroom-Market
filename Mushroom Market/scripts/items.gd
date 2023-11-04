@@ -27,6 +27,7 @@ var item_data: Array[ItemData] = [
 	preload("res://items/dirt.tres"),
 	preload("res://items/mushroom.tres"),
 	preload("res://items/composter.tres"),
+	preload("res://items/cauldron.tres"),
 ]
 
 var data_from_id: Dictionary

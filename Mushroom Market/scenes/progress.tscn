@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://blonl3pwnpsbo"]
+
+[ext_resource type="Script" path="res://scripts/progress.gd" id="1_8w51m"]
+
+[node name="Progress" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8w51m")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+text = "Update Day"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

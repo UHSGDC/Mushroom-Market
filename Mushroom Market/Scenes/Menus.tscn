@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm8ygqjm7d1v0"]
+[gd_scene load_steps=6 format=3 uid="uid://cm8ygqjm7d1v0"]
 
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_aoww2"]
 [ext_resource type="PackedScene" uid="uid://cig57j110r6n8" path="res://scenes/inventory.tscn" id="2_86wtx"]
+[ext_resource type="PackedScene" uid="uid://blonl3pwnpsbo" path="res://scenes/progress.tscn" id="3_isu08"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g1mb"]
 content_margin_left = 4.0
@@ -46,6 +47,10 @@ theme_override_font_sizes/font_size = 13
 text = "Would you like to buy 1 red mushroom for 14 dollars?"
 
 [node name="Inventory" parent="." instance=ExtResource("2_86wtx")]
+visible = false
+layout_mode = 2
+
+[node name="Progress" parent="." instance=ExtResource("3_isu08")]
 visible = false
 layout_mode = 2
 

@@ -27,12 +27,14 @@ var _layer_index: int :
 		
 var _current_tile: Vector2i
 var _is_tile_valid: bool = false
+var crafters_to_progress: Array[Array]
 
 @onready var _tile_size: int = layers[0].tile_set.tile_size.x
 @onready var preview: Sprite2D = $Preview
 
 
 func _ready() -> void:
+	Global.day_cycled.connect(_on_day_cycled)
 	Global.item_selected.connect(_on_item_selected)
 
 
@@ -42,7 +44,23 @@ func _process(delta: float) -> void:
 		
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("change_tile"):
-		edit_tile_at_mouse(_layer_index, layers.duplicate())
+		_edit_tile_at_mouse(_layer_index, layers.duplicate())
+
+
+func _on_day_cycled() -> void:
+	for layer in layers:
+		# TO DO Mushrooms will also check for soil, any modifiers on them, adjacent space, adjacent lamps, adjacent mushrooms, humidity(idk what determines this). Once one of these tiles are ready for harvest/collection there will be some sort of indication to the player. Clicking on the tile while in select mode will harvest the tile.
+		for cell in layer.get_used_cells(0):
+			var tile_id := layer.get_cell_source_id(0, cell)
+			var item_id := Items.get_id_from_tile(tile_id)
+			if Items.is_mushroom(item_id):
+				var atlas_coords := layer.get_cell_atlas_coords(0, cell)
+				if atlas_coords.y < 2:
+					layer.set_cell(0, cell, tile_id, atlas_coords + Vector2i.DOWN)
+			if Items.is_crafter(item_id):
+				var atlas_coords := layer.get_cell_atlas_coords(0, cell)
+				if atlas_coords.y < 2 and crafters_to_progress.has([layer, cell]):
+					layer.set_cell(0, cell, tile_id, atlas_coords + Vector2i.DOWN)
 
 
 func _on_item_selected(item: Items.ID) -> void:
@@ -57,7 +75,7 @@ func _on_item_selected(item: Items.ID) -> void:
 		mode = tile.place_mode
 
 
-func edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
+func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 	var layer = layer_list[layer_index]
 	if !_is_tile_valid:
 		return
@@ -66,6 +84,7 @@ func edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 			layer.set_cell(0, _current_tile, -1)
 		Mode.SELECT:
 			print("selecting tile")
+			# show stats or harvest tile
 		Mode.NONE:
 			print("currently doing nothing")
 		Mode.MUSHROOM_MODIFIER:
@@ -96,10 +115,12 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 				if tile_id != -1 and tile_above_id == -1 and Items.is_whole(tile_item_id):
 					_current_tile = tile_pos
 					i += 1
+					if Items.is_crafter(tile.id):
+						crafters_to_progress.append([layers[i], tile_pos])
 				else:
 					continue
 			Mode.DIRT:
-				if tile_id != -1 and tile_above_id == -1:
+				if Items.is_whole(tile_item_id) and tile_above_id == -1:
 					_current_tile = tile_pos
 					i += 1
 				else:

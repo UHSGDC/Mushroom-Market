@@ -8,7 +8,8 @@ func _ready() -> void:
 	Global.change_inventory_item = change_item
 	change_item(Items.ID.DIRT, 10)
 	change_item(Items.ID.MUSHROOM, 2)
-	change_item(Items.ID.COMPOSTER, 3)
+	change_item(Items.ID.CAULDRON, 3)
+	change_item(Items.ID.COMPOSTER, 1)
 
 
 func change_item(id: Items.ID, count: int) -> void:
