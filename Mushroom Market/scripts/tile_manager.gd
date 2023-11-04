@@ -24,6 +24,7 @@ var _layer_index: int :
 	set(value):
 		_layer_index = value
 		preview.layer_index = value
+		modulate = layers[value].modulate
 		
 var _current_tile: Vector2i
 var _is_tile_valid: bool = false
