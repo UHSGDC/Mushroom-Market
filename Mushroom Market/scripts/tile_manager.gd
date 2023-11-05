@@ -37,6 +37,7 @@ var crafters_to_progress: Array[Array]
 func _ready() -> void:
 	Global.day_cycled.connect(_on_day_cycled)
 	Global.item_selected.connect(_on_item_selected)
+	Global.shovel_selected.connect(_shovel_selected)
 
 
 func _process(delta: float) -> void:
@@ -64,6 +65,10 @@ func _on_day_cycled() -> void:
 					layer.set_cell(0, cell, tile_id, atlas_coords + Vector2i.DOWN)
 
 
+func _shovel_selected() -> void:
+	mode = Mode.REMOVE
+
+
 func _on_item_selected(item: Items.ID) -> void:
 	preview.texture = null
 	mode = Mode.SELECT
@@ -77,12 +82,20 @@ func _on_item_selected(item: Items.ID) -> void:
 
 
 func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
-	var layer = layer_list[layer_index]
 	if !_is_tile_valid:
 		return
+
+	var layer := layer_list[layer_index]
+	var tile_id := layer.get_cell_source_id(0, _current_tile)
+	var item_id := Items.get_id_from_tile(tile_id)
 	match mode:
 		Mode.REMOVE:
-			layer.set_cell(0, _current_tile, -1)
+			if Items.is_path(item_id) or (Items.is_soil(item_id) and !Items.is_dirt(item_id)):
+				layer.set_cell(0, _current_tile, Items.get_item_data(Items.ID.DIRT).tile_id, Vector2i(0, 0))
+			else:
+				layer.set_cell(0, _current_tile)
+			Global.change_inventory_item.call(item_id, 1)
+			
 		Mode.SELECT:
 			print("selecting tile")
 			# show stats or harvest tile
@@ -105,6 +118,8 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 		
 		var offset_tile_pos := layer.local_to_map(layer.get_local_mouse_position() + Vector2.UP * tile_size / 2)
 		var offset_tile_id :=  layer.get_cell_source_id(0, offset_tile_pos)
+		var offset_tile_above_id := layer_list[i + 1].get_cell_source_id(0, offset_tile_pos) if i < layer_list.size() - 1 else -2
+		
 		match mode:
 			Mode.MUSHROOM:
 				if tile_id != -1 and tile_above_id == -1 and Items.is_soil(tile_item_id):
@@ -112,27 +127,22 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 					i += 1
 				else:
 					continue
-			Mode.OTHER_TILE:
+			Mode.OTHER_TILE, Mode.DIRT:
 				if tile_id != -1 and tile_above_id == -1 and Items.is_whole(tile_item_id):
 					_current_tile = tile_pos
 					i += 1
-					if Items.is_crafter(tile.id):
-						crafters_to_progress.append([layers[i], tile_pos])
 				else:
 					continue
-			Mode.DIRT:
-				if Items.is_whole(tile_item_id) and tile_above_id == -1:
-					_current_tile = tile_pos
-					i += 1
-				else:
-					continue
+					
+				if Items.is_crafter(tile.id): # This needs to be changed so that the crafters need input and then get added to the array
+					crafters_to_progress.append([layers[i], tile_pos])
 			Mode.SOIL:
 				if Items.is_dirt(tile_item_id) and (tile_above_id < 0 or Items.is_mushroom(Items.get_id_from_tile(tile_above_id))):
 					_current_tile = tile_pos
 				else:
 					continue
 			Mode.PATH:
-				if Items.is_dirt(tile_item_id) and tile_above_id < 0:
+				if Items.is_dirt(tile_item_id) and (tile_above_id < 0 or !(Items.is_whole(Items.get_id_from_tile(tile_above_id)) or Items.is_mushroom(Items.get_id_from_tile(tile_above_id)))):
 					_current_tile = tile_pos
 				else:
 					continue
@@ -151,9 +161,9 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 				else:
 					continue
 			Mode.REMOVE:
-				if tile_id != -1:
+				if tile_id != -1 and (!Items.is_dirt(tile_item_id) or i > 0) and tile_above_id < 0:
 					_current_tile = tile_pos
-				elif layer.get_cell_source_id(0, offset_tile_pos) != -1:
+				elif layer.get_cell_source_id(0, offset_tile_pos) != -1 and (!Items.is_dirt(Items.get_id_from_tile(offset_tile_id)) or i > 0) and offset_tile_above_id < 0:
 					_current_tile = offset_tile_pos
 				else:
 					continue
