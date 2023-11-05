@@ -10,6 +10,7 @@ func _ready() -> void:
 	change_item(Items.ID.MUSHROOM, 2)
 	change_item(Items.ID.CAULDRON, 3)
 	change_item(Items.ID.COMPOSTER, 1)
+	change_item(Items.ID.STONE_PATH, 10)
 
 
 func change_item(id: Items.ID, count: int) -> void:
