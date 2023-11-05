@@ -1,0 +1,8 @@
+tile selection over tabs
+hard to see the tiles
+big mushrooms
+cant place blocks on the bottom
+make inventory filters work
+text pop up
+one path for top and side of tile
+mushroom placed but under all the tiles - bug
