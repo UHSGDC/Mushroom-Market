@@ -2,7 +2,7 @@ extends Node
 
 enum Use {
 	TILEMAP,
-	PRODUCT,
+	TRADEABLE,
 	OTHER
 }
 
@@ -12,23 +12,31 @@ enum ID {
 	CAULDRON = 10, # 10 - 19 is reserved for crafting items
 	COMPOSTER,
 	FERMENTER,
-	LIGHT = 20, # 20 - 29 is reserved for lights and lamps
+	BLUE_LAMP = 20, # 20 - 29 is reserved for lights and lamps
+	MAGIC_LAMP,
+	OIL_LANTERN,
 	KEY = 30, # 30 - 39 is reserved for misc. items
 	MUSHROOM_FOOD,
 	CRATE = 40, # 40 - 49 is for all misc. whole tiles
 	GRAVEL_PATH = 50, # 50 - 59 is reserved for path tiles
 	STONE_PATH,
 	DIRT = 60, # 60 - 69 is reserved for dirt and soil tiles
-	NUTRITIOUS_SOIL,
-	MUSHROOM = 70, # 70-89 is reserved for mushrooms
+	RED_SOIL,
+	PURPLE_SOIL,
+	GREEN_SOIL,
+	PURPLE_MUSHROOM_SEED = 70, # 70-89 is reserved for mushroom seeds
+	PURPLE_MUSHROOM = 90, # 90 and up is reserved for tradeable, craftable and other items
 }
 
 var item_data: Array[ItemData] = [
 	preload("res://items/dirt.tres"),
-	preload("res://items/mushroom.tres"),
+	preload("res://items/red_soil.tres"),
+	preload("res://items/purple_mushroom.tres"),
+	preload("res://items/purple_mushroom_seed.tres"),
 	preload("res://items/composter.tres"),
 	preload("res://items/cauldron.tres"),
-	preload("res://items/path.tres"),
+	preload("res://items/stone_path.tres"),
+	preload("res://items/blue_lamp.tres"),
 ]
 
 var data_from_id: Dictionary
@@ -42,7 +50,7 @@ func initiliaze_item_dictionaries() -> void:
 	for item in item_data:
 		if item.use_tags.has(Use.TILEMAP):
 			if id_from_tile.has(item.tile_id):
-				assert(false, "two items with same tile id")
+				assert(false, "two tilemap items with same tile id")
 			id_from_tile[item.tile_id] = item.id
 		if data_from_id.has(item.id):
 			assert(false, "two items with same id")

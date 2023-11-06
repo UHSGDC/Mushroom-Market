@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ProductData" load_steps=3 format=3 uid="uid://dcdauw4ywgr3n"]
+
+[ext_resource type="Script" path="res://scripts/product_data.gd" id="1_nseob"]
+[ext_resource type="Texture2D" uid="uid://bqwbb1xy1slqc" path="res://art/PurpleMushroom.png" id="1_xvcui"]
+
+[resource]
+script = ExtResource("1_nseob")
+name = "Purple Mushroom"
+id = 90
+use_tags = Array[int]([1])
+place_mode = 0
+tile_id = 0
+raw_texture = ExtResource("1_xvcui")
+can_pick_up = true

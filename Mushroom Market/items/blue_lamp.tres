@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="LightData" load_steps=3 format=3 uid="uid://wjskrs3n48yw"]
+
+[ext_resource type="Script" path="res://scripts/light_data.gd" id="1_dlbku"]
+[ext_resource type="Texture2D" uid="uid://defi1lilewa6h" path="res://art/BlueLamp.png" id="1_n34gv"]
+
+[resource]
+script = ExtResource("1_dlbku")
+light_color = Color(0, 0, 1, 1)
+name = "Blue Lamp"
+id = 20
+use_tags = Array[int]([0])
+place_mode = 5
+tile_id = 6
+raw_texture = ExtResource("1_n34gv")

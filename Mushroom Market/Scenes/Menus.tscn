@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cm8ygqjm7d1v0"]
 
-[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_aoww2"]
-[ext_resource type="PackedScene" uid="uid://cig57j110r6n8" path="res://scenes/inventory.tscn" id="2_86wtx"]
-[ext_resource type="PackedScene" uid="uid://blonl3pwnpsbo" path="res://scenes/progress.tscn" id="3_isu08"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_17efr"]
+[ext_resource type="PackedScene" uid="uid://cig57j110r6n8" path="res://scenes/inventory.tscn" id="2_y2mnr"]
+[ext_resource type="PackedScene" uid="uid://blonl3pwnpsbo" path="res://scenes/progress.tscn" id="3_bqioo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g1mb"]
 content_margin_left = 4.0
@@ -32,7 +32,7 @@ offset_top = -104.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/side_margin = 4
-theme_override_fonts/font = ExtResource("1_aoww2")
+theme_override_fonts/font = ExtResource("1_17efr")
 theme_override_font_sizes/font_size = 13
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_2g1mb")
@@ -42,35 +42,35 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_eo31l")
 
 [node name="Shop" type="Label" parent="."]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_aoww2")
+theme_override_fonts/font = ExtResource("1_17efr")
 theme_override_font_sizes/font_size = 13
 text = "Would you like to buy 1 red mushroom for 14 dollars?"
 
-[node name="Inventory" parent="." instance=ExtResource("2_86wtx")]
+[node name="Inventory" parent="." instance=ExtResource("2_y2mnr")]
 visible = false
 layout_mode = 2
 
-[node name="Progress" parent="." instance=ExtResource("3_isu08")]
+[node name="Progress" parent="." instance=ExtResource("3_bqioo")]
 visible = false
 layout_mode = 2
 
 [node name="Info" type="Label" parent="."]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_aoww2")
+theme_override_fonts/font = ExtResource("1_17efr")
 theme_override_font_sizes/font_size = 13
 text = "I dont flasf you like to buy 1 red mushroom for 14 dollars?"
 
 [node name="Profile" type="Label" parent="."]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_aoww2")
+theme_override_fonts/font = ExtResource("1_17efr")
 theme_override_font_sizes/font_size = 13
 text = "dabdasgja dakjs da bfja"
 
 [node name="Settings" type="Label" parent="."]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_aoww2")
+theme_override_fonts/font = ExtResource("1_17efr")
 theme_override_font_sizes/font_size = 13
 text = "danj mklmbjhbjnc njckvaw"

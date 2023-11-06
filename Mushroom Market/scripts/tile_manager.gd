@@ -13,6 +13,7 @@ enum Mode {
 }
 
 @export var layers: Array[TileMap]
+@export var light_scene: PackedScene
 
 var tile: ItemData = null
 var mode: Mode = Mode.SELECT :
@@ -29,6 +30,7 @@ var _layer_index: int :
 var _current_tile: Vector2i
 var _is_tile_valid: bool = false
 var crafters_to_progress: Array[Array]
+var light_tile_to_scene: Dictionary
 
 @onready var _tile_size: int = layers[0].tile_set.tile_size.x
 @onready var preview: Sprite2D = $Preview
@@ -50,7 +52,8 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_day_cycled() -> void:
-	for layer in layers:
+	for layer_index in layers.size():
+		var layer := layers[layer_index]
 		# TO DO Mushrooms will also check for soil, any modifiers on them, adjacent space, adjacent lamps, adjacent mushrooms, humidity(idk what determines this). Once one of these tiles are ready for harvest/collection there will be some sort of indication to the player. Clicking on the tile while in select mode will harvest the tile.
 		for cell in layer.get_used_cells(0):
 			var tile_id := layer.get_cell_source_id(0, cell)
@@ -58,7 +61,11 @@ func _on_day_cycled() -> void:
 			if Items.is_mushroom(item_id):
 				var atlas_coords := layer.get_cell_atlas_coords(0, cell)
 				if atlas_coords.y < 2:
-					layer.set_cell(0, cell, tile_id, atlas_coords + Vector2i.DOWN)
+					atlas_coords.y += 1
+					# This will double the speed of growth for red soil
+					if Items.get_id_from_tile(layers[layer_index - 1].get_cell_source_id(0, cell)) == Items.ID.RED_SOIL:
+						atlas_coords.y = 2
+					layer.set_cell(0, cell, tile_id, atlas_coords)
 			if Items.is_crafter(item_id):
 				var atlas_coords := layer.get_cell_atlas_coords(0, cell)
 				if atlas_coords.y < 2 and crafters_to_progress.has([layer, cell]):
@@ -81,6 +88,13 @@ func _on_item_selected(item: Items.ID) -> void:
 		mode = tile.place_mode
 
 
+func _new_light() -> PointLight2D:
+	var light: PointLight2D = light_scene.instantiate()
+	light.color = tile.light_color
+	add_child(light)
+	return light
+
+
 func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 	if !_is_tile_valid:
 		return
@@ -94,10 +108,20 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 				layer.set_cell(0, _current_tile, Items.get_item_data(Items.ID.DIRT).tile_id, Vector2i(0, 0))
 			else:
 				layer.set_cell(0, _current_tile)
+				if Items.is_light(item_id):
+					light_tile_to_scene[_current_tile].queue_free()
+					light_tile_to_scene.erase(_current_tile) 
 			Global.change_inventory_item.call(item_id, 1)
 			
 		Mode.SELECT:
-			print("selecting tile")
+			if layer.get_cell_atlas_coords(0, _current_tile) == Vector2i.DOWN * 2:
+				var output := 1
+				if Items.get_id_from_tile(layers[layer_index - 1].get_cell_source_id(0, _current_tile)) == Items.ID.GREEN_SOIL:
+					output *= 2
+				Global.change_inventory_item.call(Items.get_item_data(item_id).item_drop, output)
+				layer.set_cell(0, _current_tile, tile_id, Vector2i(0, 0))
+			else:
+				print("selecting tile")
 			# show stats or harvest tile
 		Mode.NONE:
 			print("currently doing nothing")
@@ -105,6 +129,11 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 			print("modify this shroom!!!")
 		_:
 			layer.set_cell(0, _current_tile, tile.tile_id, Vector2i(0, 0))
+			if Items.is_light(tile.id):
+				var light := _new_light()
+				light.global_position = _current_tile * _tile_size + Vector2i.UP * layer_index * _tile_size / 2 + Vector2i.ONE * _tile_size / 2 + Vector2i.DOWN * _tile_size / 2
+				light_tile_to_scene[_current_tile] = light
+				
 			Global.change_inventory_item.call(tile.id, -1)
 	
 	
