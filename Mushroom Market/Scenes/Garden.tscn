@@ -65,8 +65,20 @@ script = ExtResource("3_83euq")
 layers = [NodePath("../Layer0"), NodePath("../Layer1"), NodePath("../Layer2"), NodePath("../Layer3"), NodePath("../Layer4"), NodePath("../Layer5")]
 light_scene = ExtResource("3_skubb")
 
+[node name="TopPreview" type="Sprite2D" parent="TileManager"]
+unique_name_in_owner = true
+z_as_relative = false
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="Top" type="Polygon2D" parent="TileManager/TopPreview"]
+modulate = Color(0, 0, 0, 1)
+invert_enabled = true
+invert_border = 1.0
+polygon = PackedVector2Array(1, 1, 7, 1, 7, 7, 1, 7)
+
 [node name="Preview" type="Sprite2D" parent="TileManager"]
-show_behind_parent = true
 z_as_relative = false
 y_sort_enabled = true
 centered = false
@@ -75,21 +87,8 @@ region_enabled = true
 region_rect = Rect2(0, 8, 8, 4)
 script = ExtResource("3_2pwkn")
 
-[node name="TopPreview" type="Sprite2D" parent="TileManager/Preview"]
-z_as_relative = false
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 8, 8)
-
-[node name="Top" type="Polygon2D" parent="TileManager/Preview/TopPreview"]
+[node name="Side" type="Polygon2D" parent="TileManager/Preview"]
 modulate = Color(0, 0, 0, 1)
-self_modulate = Color(1, 0, 0, 0.27451)
-invert_enabled = true
-invert_border = 1.0
-polygon = PackedVector2Array(1, 1, 7, 1, 7, 7, 1, 7)
-
-[node name="Side" type="Polygon2D" parent="TileManager/Preview/TopPreview/Top"]
-self_modulate = Color(1, 0, 0, 0.164706)
 invert_enabled = true
 invert_border = 1.0
 polygon = PackedVector2Array(1, 9, 7, 9, 7, 11, 1, 11)
