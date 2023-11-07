@@ -109,6 +109,7 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 	var layer := layer_list[layer_index]
 	var tile_id := layer.get_cell_source_id(0, _current_tile)
 	var item_id := Items.get_id_from_tile(tile_id)
+	var tile_above_id := layer_list[layer_index + 1].get_cell_source_id(0, _current_tile) if layer_index < layer_list.size() - 1 else -2
 	match mode:
 		Mode.REMOVE:
 			if Items.is_soil(item_id) and !Items.is_dirt(item_id):
@@ -122,31 +123,43 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 					elif atlas_coords == Vector2i(0, 2):
 						layer.set_cell(0, _current_tile, Items.get_item_data(Items.ID.DIRT).tile_id, Vector2i(0, 0))
 					elif atlas_coords == Vector2i(0, 1):
-						layer.set_cell(0, _current_tile)
-						Global.change_inventory_item.call(Items.ID.DIRT, 1)
-					else:
-						print(atlas_coords)
+						if tile_above_id < 0:
+							layer.set_cell(0, _current_tile)
+							Global.change_inventory_item.call(Items.ID.DIRT, 1)
+						else:
+							print("cant remove block when there are tiles above it")
+							return
 				else:
 					if atlas_coords == Vector2i(0, 3):
 						layer.set_cell(0, _current_tile, Items.get_item_data(item_id).tile_id, Vector2i(0, 2))
 					elif atlas_coords == Vector2i(0, 2):
-						layer.set_cell(0, _current_tile)
-						Global.change_inventory_item.call(Items.ID.DIRT, 1)
+						if tile_above_id < 0:
+							layer.set_cell(0, _current_tile)
+							Global.change_inventory_item.call(Items.ID.DIRT, 1)
+						else:
+							print("cant remove block when there are tiles above it")
+							return
 					elif atlas_coords == Vector2i(0, 1):
 						layer.set_cell(0, _current_tile, Items.get_item_data(Items.ID.DIRT).tile_id, Vector2i(0, 0))
-					else:
-						print(atlas_coords, "not side")
 						
-			else:
-				layer.set_cell(0, _current_tile)
+			elif tile_above_id < 0:
 				if Items.is_light(item_id):
 					light_tile_to_scene[_current_tile].queue_free()
-					light_tile_to_scene.erase(_current_tile) 
+					light_tile_to_scene.erase(_current_tile)
+				elif layer.get_cell_atlas_coords(0, _current_tile) == Vector2i.DOWN * 2 and (Items.is_mushroom(item_id) or Items.is_crafter(item_id)):
+					var output := 1
+					if Items.get_id_from_tile(layers[layer_index - 1].get_cell_source_id(0, _current_tile)) == Items.ID.GREEN_SOIL:
+						output *= 2
+					Global.change_inventory_item.call(Items.get_item_data(item_id).item_drop, output)
+				layer.set_cell(0, _current_tile)
+			else:
+				print("cant remove block when there are tiles above it")
+				return
 					
 			Global.change_inventory_item.call(item_id, 1)
 			
 		Mode.SELECT:
-			if layer.get_cell_atlas_coords(0, _current_tile) == Vector2i.DOWN * 2:
+			if layer.get_cell_atlas_coords(0, _current_tile) == Vector2i.DOWN * 2 and (Items.is_mushroom(item_id) or Items.is_crafter(item_id)):
 				var output := 1
 				if Items.get_id_from_tile(layers[layer_index - 1].get_cell_source_id(0, _current_tile)) == Items.ID.GREEN_SOIL:
 					output *= 2
@@ -189,23 +202,38 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 		
 		match mode:
 			Mode.MUSHROOM:
-				if tile_id != -1 and tile_above_id == -1 and Items.is_soil(tile_item_id):
-					_current_tile = tile_pos
-					i += 1
+				if tile_id != -1 and Items.is_whole(tile_item_id):
+					if tile_above_id == -1 and Items.is_soil(tile_item_id):
+						_current_tile = tile_pos
+						i += 1
+					else:
+						break
 				else:
 					continue
 			Mode.OTHER_TILE, Mode.DIRT:
-				if tile_id != -1 and tile_above_id == -1 and Items.is_whole(tile_item_id):
-					_current_tile = tile_pos
-					i += 1
+				if tile_id != -1 and Items.is_whole(tile_item_id):
+					if tile_above_id == -1:
+						_current_tile = tile_pos
+						i += 1
+					else:
+						break
 				else:
 					continue
 					
 				if Items.is_crafter(tile.id): # This needs to be changed so that the crafters need input and then get added to the array
 					crafters_to_progress.append([layers[i], tile_pos])
 			Mode.SOIL:
-				if Items.is_dirt(tile_item_id) and (tile_above_id < 0 or Items.is_mushroom(Items.get_id_from_tile(tile_above_id))):
-					_current_tile = tile_pos
+				if tile_id != -1 and Items.is_whole(tile_item_id):
+					if Items.is_dirt(tile_item_id) and (tile_above_id < 0 or Items.is_mushroom(Items.get_id_from_tile(tile_above_id))):
+						_current_tile = tile_pos
+					else:
+						break
+				elif offset_tile_id != -1 and Items.is_whole(offset_tile_item_id):
+					if Items.is_dirt(offset_tile_item_id) and (offset_tile_above_id < 0 or Items.is_mushroom(Items.get_id_from_tile(offset_tile_above_id))):
+						_current_tile = offset_tile_pos
+					else:
+						break
+					
 				else:
 					continue
 			Mode.PATH:
@@ -214,8 +242,7 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 					path_placement = 1
 					preview.show_top()
 					_current_tile = tile_pos
-				# If we are hovering the side of a dirt then
-				elif Items.is_dirt(offset_tile_item_id):
+				elif Items.is_dirt(offset_tile_item_id) and (offset_tile_above_id < 0 or !Items.is_mushroom(Items.get_id_from_tile(offset_tile_above_id))):
 					path_placement = 2
 					preview.show_side()
 					_current_tile = offset_tile_pos
