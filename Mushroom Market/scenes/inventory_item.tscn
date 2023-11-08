@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bcjg5cdb3fofh"]
 
-[ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_w3xsc"]
-[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="2_467pv"]
+[ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_lgupy"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="2_jkjmo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vxf2"]
 border_color = Color(0.435294, 0.435294, 0.435294, 1)
@@ -19,12 +19,12 @@ border_color = Color(0.8, 0.8, 0.458824, 1)
 
 [node name="Item" type="PanelContainer"]
 texture_filter = 5
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(30, 34)
 theme_override_styles/panel = SubResource("StyleBoxFlat_7vxf2")
-script = ExtResource("1_w3xsc")
+script = ExtResource("1_lgupy")
 
 [node name="Icon" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(36, 36)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -34,14 +34,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Count" type="Label" parent="."]
-custom_minimum_size = Vector2(15, 0)
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("2_467pv")
+theme_override_fonts/font = ExtResource("2_jkjmo")
 theme_override_font_sizes/font_size = 13
 text = "10"
-horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Hovered" type="ColorRect" parent="."]

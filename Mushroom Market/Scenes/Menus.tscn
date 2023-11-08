@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm8ygqjm7d1v0"]
+[gd_scene load_steps=5 format=3 uid="uid://cm8ygqjm7d1v0"]
 
-[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_17efr"]
-[ext_resource type="PackedScene" uid="uid://cig57j110r6n8" path="res://scenes/inventory.tscn" id="2_y2mnr"]
-[ext_resource type="PackedScene" uid="uid://blonl3pwnpsbo" path="res://scenes/progress.tscn" id="3_bqioo"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_ntf6o"]
+[ext_resource type="PackedScene" uid="uid://cig57j110r6n8" path="res://scenes/inventory.tscn" id="2_lj50e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g1mb"]
 content_margin_left = 4.0
@@ -23,54 +22,44 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.278431, 0.27451, 0.360784, 1)
 
-[node name="Menus" type="TabContainer"]
-anchors_preset = 12
-anchor_top = 1.0
+[node name="Menus" type="PanelContainer"]
+anchors_preset = 11
+anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -104.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = -120.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Tabs" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/side_margin = 4
-theme_override_fonts/font = ExtResource("1_17efr")
+theme_override_fonts/font = ExtResource("1_ntf6o")
 theme_override_font_sizes/font_size = 13
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/panel = SubResource("StyleBoxFlat_eo31l")
+use_hidden_tabs_for_min_size = true
 
-[node name="Shop" type="Label" parent="."]
+[node name="Shope" type="Label" parent="VBoxContainer/Tabs"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_17efr")
+theme_override_fonts/font = ExtResource("1_ntf6o")
 theme_override_font_sizes/font_size = 13
-text = "Would you like to buy 1 red mushroom for 14 dollars?"
+text = "sassa"
 
-[node name="Inventory" parent="." instance=ExtResource("2_y2mnr")]
+[node name="Inve" parent="VBoxContainer/Tabs" instance=ExtResource("2_lj50e")]
 visible = false
 layout_mode = 2
 
-[node name="Progress" parent="." instance=ExtResource("3_bqioo")]
+[node name="Prof" type="Label" parent="VBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
-
-[node name="Info" type="Label" parent="."]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_17efr")
+theme_override_fonts/font = ExtResource("1_ntf6o")
 theme_override_font_sizes/font_size = 13
-text = "I dont flasf you like to buy 1 red mushroom for 14 dollars?"
-
-[node name="Profile" type="Label" parent="."]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_17efr")
-theme_override_font_sizes/font_size = 13
-text = "dabdasgja dakjs da bfja"
-
-[node name="Settings" type="Label" parent="."]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_17efr")
-theme_override_font_sizes/font_size = 13
-text = "danj mklmbjhbjnc njckvaw"
+text = "dasfa"

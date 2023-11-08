@@ -1,9 +1,17 @@
 [gd_scene load_steps=2 format=3 uid="uid://blonl3pwnpsbo"]
 
-[ext_resource type="Script" path="res://scripts/progress.gd" id="1_8w51m"]
+[ext_resource type="Script" path="res://scripts/progress.gd" id="1_ugnvy"]
 
-[node name="Progress" type="HBoxContainer"]
-script = ExtResource("1_8w51m")
+[node name="Progress" type="VBoxContainer"]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.5
+offset_right = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ugnvy")
 
 [node name="Cycle" type="Button" parent="."]
 layout_mode = 2

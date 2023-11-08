@@ -1,41 +1,77 @@
-[gd_scene load_steps=18 format=3 uid="uid://cig57j110r6n8"]
+[gd_scene load_steps=6 format=3 uid="uid://cig57j110r6n8"]
 
-[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_a1fby"]
-[ext_resource type="PackedScene" uid="uid://bcjg5cdb3fofh" path="res://scenes/inventory_item.tscn" id="2_61dww"]
-[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="3_ox8o3"]
-[ext_resource type="Texture2D" uid="uid://b1tqu2qjibhs4" path="res://art/Checked.png" id="4_m1t03"]
-[ext_resource type="Texture2D" uid="uid://dvcoor5xpi2t8" path="res://art/Unchecked.png" id="5_5tgkg"]
+[ext_resource type="Script" path="res://scripts/inventory.gd" id="1_crpr8"]
+[ext_resource type="PackedScene" uid="uid://bcjg5cdb3fofh" path="res://Scenes/inventory_item.tscn" id="2_l48sr"]
+[ext_resource type="Script" path="res://scripts/filters.gd" id="3_x1pg3"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="4_0tq1j"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by83x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgsbc"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i6ts1"]
+[node name="Inventory" type="VSplitContainer"]
+custom_minimum_size = Vector2(112, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.5
+offset_right = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 50
+dragger_visibility = 2
+script = ExtResource("1_crpr8")
+item_scene = ExtResource("2_l48sr")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aaxss"]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cgsbc")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qcxdj"]
+[node name="Filters" type="GridContainer" parent="PanelContainer"]
+layout_mode = 2
+columns = 2
+script = ExtResource("3_x1pg3")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m32de"]
+[node name="All" type="Button" parent="PanelContainer/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_0tq1j")
+theme_override_font_sizes/font_size = 13
+text = "All
+"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jbcw8"]
+[node name="Placeables" type="Button" parent="PanelContainer/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_0tq1j")
+theme_override_font_sizes/font_size = 13
+text = "Placeables"
+alignment = 2
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ulqy"]
+[node name="Sellables" type="Button" parent="PanelContainer/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_0tq1j")
+theme_override_font_sizes/font_size = 13
+text = "Sellables"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o4dd6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_njmdu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqebw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oagob"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d4obw"]
-
-[node name="Inventory" type="HSplitContainer"]
-custom_minimum_size = Vector2(472, 80)
-split_offset = 150
-dragger_visibility = 1
-script = ExtResource("1_a1fby")
-item_scene = ExtResource("2_61dww")
+[node name="Other" type="Button" parent="PanelContainer/Filters"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_0tq1j")
+theme_override_font_sizes/font_size = 13
+text = "Other"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -47,92 +83,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="ItemContainer" type="GridContainer" parent="ColorRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 7
-
-[node name="Filters" type="VBoxContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="All" type="CheckBox" parent="Filters"]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/check_v_offset = 4
-theme_override_fonts/font = ExtResource("3_ox8o3")
-theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("4_m1t03")
-theme_override_icons/checked_disabled = ExtResource("4_m1t03")
-theme_override_icons/unchecked = ExtResource("5_5tgkg")
-theme_override_icons/unchecked_disabled = ExtResource("5_5tgkg")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_by83x")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_i6ts1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_aaxss")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_qcxdj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m32de")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_jbcw8")
-text = "All"
-
-[node name="Products" type="CheckBox" parent="Filters"]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/check_v_offset = 4
-theme_override_fonts/font = ExtResource("3_ox8o3")
-theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("4_m1t03")
-theme_override_icons/checked_disabled = ExtResource("4_m1t03")
-theme_override_icons/unchecked = ExtResource("5_5tgkg")
-theme_override_icons/unchecked_disabled = ExtResource("5_5tgkg")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulqy")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4dd6")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_njmdu")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yqebw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_oagob")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_d4obw")
-text = "Products"
-
-[node name="Placeable" type="CheckBox" parent="Filters"]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/check_v_offset = 4
-theme_override_fonts/font = ExtResource("3_ox8o3")
-theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("4_m1t03")
-theme_override_icons/checked_disabled = ExtResource("4_m1t03")
-theme_override_icons/unchecked = ExtResource("5_5tgkg")
-theme_override_icons/unchecked_disabled = ExtResource("5_5tgkg")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulqy")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4dd6")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_njmdu")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yqebw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_oagob")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_d4obw")
-text = "Placeable"
-
-[node name="Decoration" type="CheckBox" parent="Filters"]
-visible = false
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/check_v_offset = 4
-theme_override_fonts/font = ExtResource("3_ox8o3")
-theme_override_font_sizes/font_size = 13
-theme_override_icons/checked = ExtResource("4_m1t03")
-theme_override_icons/checked_disabled = ExtResource("4_m1t03")
-theme_override_icons/unchecked = ExtResource("5_5tgkg")
-theme_override_icons/unchecked_disabled = ExtResource("5_5tgkg")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_0ulqy")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_o4dd6")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_njmdu")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yqebw")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_oagob")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_d4obw")
-text = "Decoration"
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 3
