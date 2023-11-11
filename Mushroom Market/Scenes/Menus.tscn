@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm8ygqjm7d1v0"]
+[gd_scene load_steps=7 format=3 uid="uid://cm8ygqjm7d1v0"]
 
-[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_ntf6o"]
-[ext_resource type="PackedScene" uid="uid://cig57j110r6n8" path="res://scenes/inventory.tscn" id="2_lj50e"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_kd22x"]
+[ext_resource type="Script" path="res://scripts/tabs.gd" id="2_ody7t"]
+[ext_resource type="PackedScene" uid="uid://6buwu2llx83k" path="res://scenes/inventory.tscn" id="3_0peui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2g1mb"]
 content_margin_left = 4.0
@@ -22,6 +23,9 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.278431, 0.27451, 0.360784, 1)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ljesm"]
+load_path = "res://.godot/imported/UIIcons.png-442776ea62d89156b50fecef588e0dca.ctex"
+
 [node name="Menus" type="PanelContainer"]
 anchors_preset = 11
 anchor_left = 1.0
@@ -38,28 +42,34 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/side_margin = 4
-theme_override_fonts/font = ExtResource("1_ntf6o")
+theme_override_fonts/font = ExtResource("1_kd22x")
 theme_override_font_sizes/font_size = 13
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_2g1mb")
 theme_override_styles/panel = SubResource("StyleBoxFlat_eo31l")
+tab_alignment = 1
 use_hidden_tabs_for_min_size = true
+script = ExtResource("2_ody7t")
+icons = SubResource("CompressedTexture2D_ljesm")
 
-[node name="Shope" type="Label" parent="VBoxContainer/Tabs"]
+[node name="Shop" type="Label" parent="VBoxContainer/Tabs"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ntf6o")
+theme_override_fonts/font = ExtResource("1_kd22x")
 theme_override_font_sizes/font_size = 13
 text = "sassa"
+metadata/_tab_name = ""
 
-[node name="Inve" parent="VBoxContainer/Tabs" instance=ExtResource("2_lj50e")]
+[node name="Inventory" parent="VBoxContainer/Tabs" instance=ExtResource("3_0peui")]
 visible = false
 layout_mode = 2
+metadata/_tab_name = ""
 
-[node name="Prof" type="Label" parent="VBoxContainer/Tabs"]
+[node name="Profile" type="Label" parent="VBoxContainer/Tabs"]
 visible = false
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_ntf6o")
+theme_override_fonts/font = ExtResource("1_kd22x")
 theme_override_font_sizes/font_size = 13
 text = "dasfa"
+metadata/_tab_name = ""
