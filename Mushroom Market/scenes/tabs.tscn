@@ -1,0 +1,159 @@
+[gd_scene load_steps=20 format=3 uid="uid://cw21spg3mhljy"]
+
+[ext_resource type="Script" path="res://scripts/tabs.gd" id="1_wenkm"]
+[ext_resource type="Script" path="res://scripts/tab_button.gd" id="2_fbb1a"]
+[ext_resource type="Texture2D" uid="uid://blfuju1y3uq66" path="res://art/UIIcons.png" id="3_4yn7e"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="4_2v7yj"]
+[ext_resource type="PackedScene" uid="uid://6buwu2llx83k" path="res://scenes/inventory.tscn" id="5_g78sm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5s0aa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7as2"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmwbv"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pirhu"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8v3j"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rkqq"]
+border_width_left = 2
+border_width_top = 12
+border_width_right = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qndb0"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nhju"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1f5f"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw7fq"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf06w"]
+border_width_left = 2
+border_width_top = 12
+border_width_right = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hk1qq"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwk78"]
+atlas = ExtResource("3_4yn7e")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_od8um"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[node name="Tabs" type="PanelContainer"]
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5s0aa")
+script = ExtResource("1_wenkm")
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="Buttons" type="HBoxContainer" parent="VSplitContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Panel" type="PanelContainer" parent="VSplitContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_fbb1a")
+normal_style = SubResource("StyleBoxFlat_h7as2")
+
+[node name="Shop" type="TextureButton" parent="VSplitContainer/Buttons/Panel"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_gmwbv")
+texture_pressed = SubResource("AtlasTexture_pirhu")
+texture_hover = SubResource("AtlasTexture_pirhu")
+texture_disabled = SubResource("AtlasTexture_n8v3j")
+stretch_mode = 3
+
+[node name="Panel2" type="PanelContainer" parent="VSplitContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_fbb1a")
+normal_style = SubResource("StyleBoxFlat_2rkqq")
+
+[node name="Inventory" type="TextureButton" parent="VSplitContainer/Buttons/Panel2"]
+layout_mode = 2
+focus_mode = 0
+texture_normal = SubResource("AtlasTexture_qndb0")
+texture_pressed = SubResource("AtlasTexture_3nhju")
+texture_hover = SubResource("AtlasTexture_w1f5f")
+texture_disabled = SubResource("AtlasTexture_gw7fq")
+stretch_mode = 3
+
+[node name="Panel3" type="PanelContainer" parent="VSplitContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_fbb1a")
+normal_style = SubResource("StyleBoxFlat_nf06w")
+
+[node name="Profile" type="TextureButton" parent="VSplitContainer/Buttons/Panel3"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_hk1qq")
+texture_pressed = SubResource("AtlasTexture_qwk78")
+texture_hover = SubResource("AtlasTexture_qwk78")
+texture_disabled = SubResource("AtlasTexture_qwk78")
+stretch_mode = 3
+
+[node name="Panels" type="PanelContainer" parent="VSplitContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_od8um")
+
+[node name="Shop" type="Label" parent="VSplitContainer/Panels"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_2v7yj")
+theme_override_font_sizes/font_size = 13
+text = "sassa"
+
+[node name="Inventory" parent="VSplitContainer/Panels" instance=ExtResource("5_g78sm")]
+visible = false
+layout_mode = 2
+
+[node name="Profile" type="Label" parent="VSplitContainer/Panels"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_2v7yj")
+theme_override_font_sizes/font_size = 13
+text = "dasfa"

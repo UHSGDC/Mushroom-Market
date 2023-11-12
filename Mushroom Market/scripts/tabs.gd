@@ -1,32 +1,60 @@
-@tool
-extends TabContainer
+extends PanelContainer
 
 
-@export var icons: Texture : 
-	set(value):
-		icons = value
-		shop_icon = AtlasTexture.new()
-		shop_icon.atlas = value
-		shop_icon.region.size = Vector2(24, 24)
-		inventory_icon = shop_icon.duplicate()
-		inventory_icon.region.position.y += 24
-		profile_icon = inventory_icon.duplicate()
-		profile_icon.region.position.y += 24
 
-var shop_icon: AtlasTexture
-var inventory_icon: AtlasTexture
-var profile_icon: AtlasTexture
+@onready var shop_button := $VSplitContainer/Buttons/Panel/Shop
+@onready var inventory_button := $VSplitContainer/Buttons/Panel2/Inventory
+@onready var profile_button := $VSplitContainer/Buttons/Panel3/Profile
+
+@onready var shop_button_panel := $VSplitContainer/Buttons/Panel
+@onready var inventory_button_panel := $VSplitContainer/Buttons/Panel2
+@onready var profile_button_panel := $VSplitContainer/Buttons/Panel3
+
+@onready var shop_panel := $VSplitContainer/Panels/Shop
+@onready var inventory_panel := $VSplitContainer/Panels/Inventory
+@onready var profile_panel := $VSplitContainer/Panels/Profile
 	
-func set_tabs() -> void:
-	set_tab_icon(0, shop_icon)
-	set_tab_icon(1, inventory_icon)
-	set_tab_icon(2, profile_icon)
-	set_tab_title(0, "")
-	set_tab_title(1, "")
-	set_tab_title(2, "")
-	
-	
+
 func _ready() -> void:
-	set_tabs()
+	shop_button.button_down.connect(_on_shop_pressed)
+	inventory_button.button_down.connect(_on_inventory_pressed)
+	profile_button.button_down.connect(_on_profile_pressed)
 	
-	
+	_on_inventory_pressed()
+
+
+func _on_shop_pressed() -> void:
+	shop_button.disabled = true
+	inventory_button.disabled = false
+	profile_button.disabled = false
+	shop_button_panel.selected = true
+	inventory_button_panel.selected = false
+	profile_button_panel.selected = false
+	shop_panel.show()
+	inventory_panel.hide()
+	profile_panel.hide()
+
+
+func _on_inventory_pressed() -> void:
+	shop_button.disabled = false
+	inventory_button.disabled = true
+	profile_button.disabled = false
+	shop_button_panel.selected = false
+	inventory_button_panel.selected = true
+	profile_button_panel.selected = false
+	shop_panel.hide()
+	inventory_panel.show()
+	profile_panel.hide()
+
+
+func _on_profile_pressed() -> void:
+	shop_button.disabled = false
+	inventory_button.disabled = false
+	profile_button.disabled = true
+	shop_button_panel.selected = false
+	inventory_button_panel.selected = false
+	profile_button_panel.selected = true
+	shop_panel.hide()
+	inventory_panel.hide()
+	profile_panel.show()
+
