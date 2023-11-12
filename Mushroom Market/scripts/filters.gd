@@ -6,6 +6,7 @@ signal filter_changed(filter: Inventory.Filter)
 func _ready() -> void:
 	for child in get_children():
 		child.pressed.connect(_on_button_pressed.bind(child))
+	_on_button_pressed.call_deferred($All)
 	
 	
 func _on_button_pressed(button: Button) ->  void:
