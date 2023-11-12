@@ -156,8 +156,7 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 				print("cant remove block when there are tiles above it")
 				return
 					
-			Global.change_inventory_item.call(item_id, 1)
-			
+			Global.change_inventory_item.call(item_id, 1)		
 		Mode.SELECT:
 			if layer.get_cell_atlas_coords(0, _current_tile) == Vector2i.DOWN * 2 and (Items.is_mushroom(item_id) or Items.is_crafter(item_id)):
 				var output := 1
@@ -242,10 +241,6 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 					path_placement = 1
 					preview.show_top()
 					_current_tile = tile_pos
-				elif Items.is_dirt(offset_tile_item_id) and (offset_tile_above_id < 0 or !Items.is_mushroom(Items.get_id_from_tile(offset_tile_above_id))):
-					path_placement = 2
-					preview.show_side()
-					_current_tile = offset_tile_pos
 				elif tile_item_id == tile.id:
 					if layer.get_cell_atlas_coords(0, tile_pos) == Vector2i(0, 2):
 						path_placement = 3
@@ -253,6 +248,10 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 						_current_tile = tile_pos
 					else:
 						break
+				elif Items.is_dirt(offset_tile_item_id) and (offset_tile_above_id < 0 or !Items.is_mushroom(Items.get_id_from_tile(offset_tile_above_id))):
+					path_placement = 2
+					preview.show_side()
+					_current_tile = offset_tile_pos
 				elif offset_tile_item_id == tile.id:
 					if layer.get_cell_atlas_coords(0, offset_tile_pos) == Vector2i(0, 1):
 						path_placement = 3
