@@ -78,6 +78,16 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 
 [node name="Tabs" type="PanelContainer"]
+custom_minimum_size = Vector2(120, 236)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.656
+offset_left = -58.0
+offset_right = 58.0
+offset_bottom = -0.160004
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5s0aa")
 script = ExtResource("1_wenkm")
@@ -94,6 +104,7 @@ theme_override_constants/separation = 0
 [node name="Panel" type="PanelContainer" parent="VSplitContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_h7as2")
 script = ExtResource("2_fbb1a")
 normal_style = SubResource("StyleBoxFlat_h7as2")
 
@@ -109,6 +120,7 @@ stretch_mode = 3
 [node name="Panel2" type="PanelContainer" parent="VSplitContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2rkqq")
 script = ExtResource("2_fbb1a")
 normal_style = SubResource("StyleBoxFlat_2rkqq")
 
@@ -124,6 +136,7 @@ stretch_mode = 3
 [node name="Panel3" type="PanelContainer" parent="VSplitContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_nf06w")
 script = ExtResource("2_fbb1a")
 normal_style = SubResource("StyleBoxFlat_nf06w")
 
