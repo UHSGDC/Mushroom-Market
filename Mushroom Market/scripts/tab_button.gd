@@ -16,7 +16,6 @@ var hovered: bool = false :
 var selected: bool = false : 
 	set(value):
 		selected = value
-		print("selected: ", value)
 		style.bg_color = SELECT_COLOR if value else NORMAL_COLOR
 		style.border_width_top = 4 if value or hovered else 12
 
