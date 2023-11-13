@@ -1,2 +1,0 @@
-make inventory filters work
-text pop up for inventory

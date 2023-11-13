@@ -19,7 +19,7 @@ anti_aliasing = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmwbv"]
 atlas = ExtResource("3_4yn7e")
-region = Rect2(0, 0, 24, 24)
+region = Rect2(0, 0, 26, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pirhu"]
 atlas = ExtResource("3_4yn7e")
