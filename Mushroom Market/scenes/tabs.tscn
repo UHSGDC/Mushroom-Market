@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/tabs.gd" id="1_wenkm"]
 [ext_resource type="Script" path="res://scripts/tab_button.gd" id="2_fbb1a"]
-[ext_resource type="Texture2D" uid="uid://blfuju1y3uq66" path="res://art/UIIcons.png" id="3_4yn7e"]
+[ext_resource type="Texture2D" uid="uid://blfuju1y3uq66" path="res://art/ui/UIIcons.png" id="3_b2wn6"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="4_2v7yj"]
 [ext_resource type="PackedScene" uid="uid://6buwu2llx83k" path="res://scenes/inventory.tscn" id="5_g78sm"]
 
@@ -18,15 +18,15 @@ corner_radius_top_right = 4
 anti_aliasing = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmwbv"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(0, 0, 26, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pirhu"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8v3j"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rkqq"]
@@ -39,19 +39,19 @@ corner_radius_top_right = 4
 anti_aliasing = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qndb0"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(0, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3nhju"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(24, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w1f5f"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(24, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gw7fq"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(24, 24, 24, 24)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf06w"]
@@ -64,11 +64,11 @@ corner_radius_top_right = 4
 anti_aliasing = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hk1qq"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(0, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwk78"]
-atlas = ExtResource("3_4yn7e")
+atlas = ExtResource("3_b2wn6")
 region = Rect2(24, 48, 24, 24)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_od8um"]

@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm8ygqjm7d1v0"]
+[gd_scene load_steps=12 format=3 uid="uid://cm8ygqjm7d1v0"]
 
+[ext_resource type="Texture2D" uid="uid://blfuju1y3uq66" path="res://art/ui/UIIcons.png" id="1_vo4eq"]
 [ext_resource type="PackedScene" uid="uid://cw21spg3mhljy" path="res://scenes/tabs.tscn" id="1_yxxun"]
+[ext_resource type="Texture2D" uid="uid://bp8hlwr2oj1a6" path="res://art/ui/SwitchButton.tres" id="2_cc0sy"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="2_qoqwu"]
+[ext_resource type="Texture2D" uid="uid://bimsn7eglpwuq" path="res://art/ui/Book.tres" id="3_db7n0"]
+[ext_resource type="Texture2D" uid="uid://crfafnd5mq8h" path="res://art/ui/Money.tres" id="3_v3hbb"]
+[ext_resource type="Texture2D" uid="uid://b35em4xocl1ak" path="res://art/ui/XP.tres" id="4_s8bp7"]
+[ext_resource type="Texture2D" uid="uid://cp7dx0ntdh3ra" path="res://art/ui/Settings.tres" id="4_sjeqx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sg1sa"]
 bg_color = Color(0.658824, 0.32549, 0.117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iisrl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o8nv"]
+atlas = ExtResource("1_vo4eq")
+region = Rect2(24, 192, 24, 24)
 
 [node name="Menus" type="PanelContainer"]
 anchors_preset = 11
@@ -17,6 +30,127 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sg1sa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+
+[node name="ButtonPanel" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_iisrl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ButtonPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/ButtonPanel/MarginContainer"]
+layout_mode = 2
+split_offset = 37
+dragger_visibility = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Day" type="TextureRect" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = SubResource("AtlasTexture_6o8nv")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer/Day"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_qoqwu")
+theme_override_font_sizes/font_size = 13
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Money" type="TextureRect" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("3_v3hbb")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer/Money"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_qoqwu")
+theme_override_font_sizes/font_size = 13
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="XP" type="TextureRect" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture = ExtResource("4_s8bp7")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer/XP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_qoqwu")
+theme_override_font_sizes/font_size = 13
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer"]
+custom_minimum_size = Vector2(76, 76)
+layout_mode = 2
+
+[node name="Switch" type="Button" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer/CenterContainer"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("2_cc0sy")
+icon_alignment = 1
+
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Book" type="Button" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer/VSplitContainer/CenterContainer"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+focus_mode = 0
+icon = ExtResource("3_db7n0")
+icon_alignment = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Settings" type="Button" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer/VSplitContainer/CenterContainer2"]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+icon = ExtResource("4_sjeqx")
+icon_alignment = 1
 
 [node name="Tabs" parent="VBoxContainer" instance=ExtResource("1_yxxun")]
 layout_mode = 2
