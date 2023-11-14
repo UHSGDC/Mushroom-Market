@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1tqu2qjibhs4"
-path="res://.godot/imported/Checked.png-aa086864deb75c26a582c8cecda71019.ctex"
+uid="uid://defi1lilewa6h"
+path="res://.godot/imported/BlueLamp.png-782e4614b4262688b2cde64c11d8621d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Checked.png"
-dest_files=["res://.godot/imported/Checked.png-aa086864deb75c26a582c8cecda71019.ctex"]
+source_file="res://art/items/BlueLamp.png"
+dest_files=["res://.godot/imported/BlueLamp.png-782e4614b4262688b2cde64c11d8621d.ctex"]
 
 [params]
 

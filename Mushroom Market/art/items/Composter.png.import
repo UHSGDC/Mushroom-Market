@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqwbb1xy1slqc"
-path="res://.godot/imported/PurpleMushroom.png-05d713e5c0884dd12a539fe9da55b792.ctex"
+uid="uid://ckjkqrxkj1wlb"
+path="res://.godot/imported/Composter.png-bca37f78458b5993b7159cd6f21b5f56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/PurpleMushroom.png"
-dest_files=["res://.godot/imported/PurpleMushroom.png-05d713e5c0884dd12a539fe9da55b792.ctex"]
+source_file="res://art/items/Composter.png"
+dest_files=["res://.godot/imported/Composter.png-bca37f78458b5993b7159cd6f21b5f56.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cgloal0x5w66g"]
 
-[ext_resource type="Texture2D" uid="uid://duybj4214ehie" path="res://art/RedSoil.png" id="1_1mhuf"]
+[ext_resource type="Texture2D" uid="uid://duybj4214ehie" path="res://art/items/RedSoil.png" id="1_1mhuf"]
 [ext_resource type="Script" path="res://scripts/item_data.gd" id="1_ienvi"]
 
 [resource]

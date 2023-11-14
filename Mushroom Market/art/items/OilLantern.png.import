@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvcoor5xpi2t8"
-path="res://.godot/imported/Unchecked.png-8846b96d05c18f2f39f5d0bff08c57f6.ctex"
+uid="uid://dk8lkry028ocw"
+path="res://.godot/imported/OilLantern.png-15cce6791a204bda15ab6ea173bf9f09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Unchecked.png"
-dest_files=["res://.godot/imported/Unchecked.png-8846b96d05c18f2f39f5d0bff08c57f6.ctex"]
+source_file="res://art/items/OilLantern.png"
+dest_files=["res://.godot/imported/OilLantern.png-15cce6791a204bda15ab6ea173bf9f09.ctex"]
 
 [params]
 

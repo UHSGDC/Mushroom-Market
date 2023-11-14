@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://c4y8wwb7jmtnf"]
 
-[ext_resource type="Texture2D" uid="uid://bqwbb1xy1slqc" path="res://art/PurpleMushroom.png" id="1_3may3"]
+[ext_resource type="Texture2D" uid="uid://bqwbb1xy1slqc" path="res://art/items/PurpleMushroom.png" id="1_3may3"]
 [ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="1_7jgoh"]
 
 [resource]

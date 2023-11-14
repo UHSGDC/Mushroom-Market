@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckjkqrxkj1wlb"
-path="res://.godot/imported/Composter.png-c0192e7271079f8847bbe625c38aa60c.ctex"
+uid="uid://b1tqu2qjibhs4"
+path="res://.godot/imported/Checked.png-903a7220c6e6e5f4c0edd163727df24e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Composter.png"
-dest_files=["res://.godot/imported/Composter.png-c0192e7271079f8847bbe625c38aa60c.ctex"]
+source_file="res://art/ui/Checked.png"
+dest_files=["res://.godot/imported/Checked.png-903a7220c6e6e5f4c0edd163727df24e.ctex"]
 
 [params]
 

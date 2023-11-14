@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d24o8itrjvslv"
-path="res://.godot/imported/tile test.png-ebcf8e586a6082a813ca27532d4d69f2.ctex"
+uid="uid://bqwbb1xy1slqc"
+path="res://.godot/imported/PurpleMushroom.png-03dc06eda3664fb87a106b0ba0f86a89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tile test.png"
-dest_files=["res://.godot/imported/tile test.png-ebcf8e586a6082a813ca27532d4d69f2.ctex"]
+source_file="res://art/items/PurpleMushroom.png"
+dest_files=["res://.godot/imported/PurpleMushroom.png-03dc06eda3664fb87a106b0ba0f86a89.ctex"]
 
 [params]
 
