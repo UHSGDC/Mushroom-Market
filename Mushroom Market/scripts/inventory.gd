@@ -1,4 +1,4 @@
-class_name Inventory extends SplitContainer
+class_name Inventory extends Container
 
 enum Filter {
 	ALL,
@@ -9,11 +9,11 @@ enum Filter {
 
 @export var item_scene: PackedScene
 
-@onready var item_container = $ColorRect/VSplitContainer/ScrollContainer/ItemContainer
+@onready var item_container = $PanelContainer/ScrollContainer/ItemContainer
 
 func _ready() -> void:
 	Global.change_inventory_item = change_item
-	$PanelContainer/Filters.filter_changed.connect(_on_filter_changed)
+	$Filters.filter_changed.connect(_on_filter_changed)
 	change_item(Items.ID.STONE_PATH, 10)
 	change_item(Items.ID.RED_SOIL, 10)
 	change_item(Items.ID.PURPLE_MUSHROOM_SEED, 2)
