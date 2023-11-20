@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt7wrchnkcgg7"]
+[gd_scene load_steps=7 format=3 uid="uid://dt7wrchnkcgg7"]
 
+[ext_resource type="PackedScene" uid="uid://cd5h2l8qpe0rb" path="res://scenes/market.tscn" id="1_goi7o"]
+[ext_resource type="Script" path="res://main.gd" id="1_ka5i3"]
 [ext_resource type="PackedScene" uid="uid://b1r0b3dau4ln3" path="res://scenes/garden.tscn" id="1_w66gk"]
 [ext_resource type="PackedScene" uid="uid://cm8ygqjm7d1v0" path="res://scenes/menus.tscn" id="2_mn65f"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="3_ck5hr"]
 [ext_resource type="Script" path="res://scripts/context_info.gd" id="4_ovufc"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ka5i3")
 
 [node name="World" type="SubViewportContainer" parent="."]
 anchors_preset = 15
@@ -27,6 +30,11 @@ render_target_update_mode = 4
 [node name="Garden" parent="World/SubViewport" instance=ExtResource("1_w66gk")]
 scale = Vector2(1, 1)
 
+[node name="Market" parent="World/SubViewport" instance=ExtResource("1_goi7o")]
+visible = false
+scale = Vector2(1, 1)
+transform = Transform2D(1, 0, 0, 1, 0, 0)
+
 [node name="Menus" parent="." instance=ExtResource("2_mn65f")]
 
 [node name="ContextInfo" type="Label" parent="."]
@@ -45,3 +53,5 @@ theme_override_fonts/font = ExtResource("3_ck5hr")
 theme_override_font_sizes/font_size = 13
 horizontal_alignment = 2
 script = ExtResource("4_ovufc")
+
+[connection signal="switch_pressed" from="Menus" to="." method="_on_menus_switch_pressed"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm8ygqjm7d1v0"]
+[gd_scene load_steps=13 format=3 uid="uid://cm8ygqjm7d1v0"]
 
+[ext_resource type="Script" path="res://scripts/menus.gd" id="1_8r5wb"]
 [ext_resource type="Texture2D" uid="uid://blfuju1y3uq66" path="res://art/ui/UIIcons.png" id="1_vo4eq"]
 [ext_resource type="PackedScene" uid="uid://cw21spg3mhljy" path="res://scenes/tabs.tscn" id="1_yxxun"]
 [ext_resource type="Texture2D" uid="uid://bp8hlwr2oj1a6" path="res://art/ui/SwitchButton.tres" id="2_cc0sy"]
@@ -27,6 +28,7 @@ offset_left = -120.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_sg1sa")
+script = ExtResource("1_8r5wb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -63,11 +65,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 2.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_qoqwu")
 theme_override_font_sizes/font_size = 13
-text = "10"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -91,13 +95,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
 
-[node name="XP" type="TextureRect" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer"]
+[node name="Level" type="TextureRect" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer"]
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 texture = ExtResource("4_s8bp7")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer/XP"]
+[node name="Label" type="Label" parent="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HBoxContainer/Level"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,3 +158,5 @@ icon_alignment = 1
 
 [node name="Tabs" parent="VBoxContainer" instance=ExtResource("1_yxxun")]
 layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/ButtonPanel/MarginContainer/VSplitContainer/HSplitContainer/CenterContainer/Switch" to="." method="_on_switch_pressed"]
