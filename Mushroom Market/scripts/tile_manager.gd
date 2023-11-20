@@ -80,6 +80,7 @@ func _on_day_cycled() -> void:
 
 
 func _shovel_selected() -> void:
+	_on_item_selected(Items.ID.NO_ITEM)
 	mode = Mode.REMOVE
 
 
