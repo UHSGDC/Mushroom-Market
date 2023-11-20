@@ -9,7 +9,7 @@ enum Filter {
 
 @export var item_scene: PackedScene
 
-@onready var item_container = $ColorRect/ScrollContainer/ItemContainer
+@onready var item_container = $ColorRect/VSplitContainer/ScrollContainer/ItemContainer
 
 func _ready() -> void:
 	Global.change_inventory_item = change_item
@@ -20,6 +20,8 @@ func _ready() -> void:
 	change_item(Items.ID.CAULDRON, 3)
 	change_item(Items.ID.COMPOSTER, 1)
 	change_item(Items.ID.BLUE_LAMP, 10)
+	change_item(Items.ID.PURPLE_MUSHROOM, 10)
+	change_item(Items.ID.DIRT, 10)
 
 
 func change_item(id: Items.ID, count: int) -> void:
@@ -64,3 +66,6 @@ func _on_filter_changed(filter: Filter) -> void:
 				else:
 					child.hide()
 		
+
+func _on_shovel_pressed() -> void:
+	Global.shovel_selected.emit()
