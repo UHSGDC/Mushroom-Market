@@ -35,7 +35,7 @@ var selecting_side: bool = false
 
 
 func _ready() -> void:
-	Global.day_cycled.connect(_on_day_cycled)
+	Player.day_changed.connect(_on_day_changed)
 	Global.item_selected.connect(_on_item_selected)
 	Global.shovel_selected.connect(_shovel_selected)
 
@@ -58,7 +58,7 @@ func _set_layer_index(value: int, elevate_side: bool):
 	preview.set_layer_index(value, elevate_side)
 	
 
-func _on_day_cycled() -> void:
+func _on_day_changed(day: int) -> void:
 	for layer_index in layers.size():
 		var layer := layers[layer_index]
 		# TO DO Mushrooms will also check for soil, any modifiers on them, adjacent space, adjacent lamps, adjacent mushrooms, humidity(idk what determines this). Once one of these tiles are ready for harvest/collection there will be some sort of indication to the player. Clicking on the tile while in select mode will harvest the tile.
