@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://cw21spg3mhljy"]
+[gd_scene load_steps=21 format=3 uid="uid://cw21spg3mhljy"]
 
 [ext_resource type="Script" path="res://scripts/tabs.gd" id="1_wenkm"]
 [ext_resource type="Script" path="res://scripts/tab_button.gd" id="2_fbb1a"]
 [ext_resource type="Texture2D" uid="uid://blfuju1y3uq66" path="res://art/ui/UIIcons.png" id="3_b2wn6"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="4_2v7yj"]
+[ext_resource type="PackedScene" uid="uid://ntf5j65oo0ii" path="res://scenes/shop.tscn" id="4_gowr6"]
 [ext_resource type="PackedScene" uid="uid://6buwu2llx83k" path="res://scenes/inventory.tscn" id="5_g78sm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5s0aa"]
@@ -152,12 +153,8 @@ stretch_mode = 3
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_od8um")
 
-[node name="Shop" type="Label" parent="VSplitContainer/Panels"]
+[node name="Shop" parent="VSplitContainer/Panels" instance=ExtResource("4_gowr6")]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("4_2v7yj")
-theme_override_font_sizes/font_size = 13
-text = "sassa"
 
 [node name="Inventory" parent="VSplitContainer/Panels" instance=ExtResource("5_g78sm")]
 visible = false

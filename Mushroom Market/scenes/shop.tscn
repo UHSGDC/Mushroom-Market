@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://ntf5j65oo0ii"]
+
+[ext_resource type="Script" path="res://scripts/shop.gd" id="1_06axs"]
+[ext_resource type="Script" path="res://scripts/categories.gd" id="2_753f5"]
+[ext_resource type="Texture2D" uid="uid://bqcoc2c0nlur1" path="res://art/ui/CategoryAll.tres" id="3_wmbwl"]
+[ext_resource type="Texture2D" uid="uid://cm7uk3s2ipyfd" path="res://art/ui/CategoryMushrooms.tres" id="4_l1wbg"]
+[ext_resource type="Texture2D" uid="uid://cwcvnyxqhpuii" path="res://art/ui/CategoryCrafters.tres" id="5_opkv6"]
+[ext_resource type="Texture2D" uid="uid://cyrmwe16bjsfk" path="res://art/ui/CategoryNatural.tres" id="6_k4w6l"]
+[ext_resource type="Texture2D" uid="uid://sh52l32tt6lj" path="res://art/ui/CategoryLights.tres" id="7_lsd7f"]
+[ext_resource type="Texture2D" uid="uid://brqpbsh6dod54" path="res://art/ui/CategoryOther.tres" id="8_arbep"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nctf"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 2.0
+content_margin_bottom = 3.0
+bg_color = Color(0.968627, 0.831373, 0.552941, 1)
+
+[node name="Shop" type="VBoxContainer"]
+custom_minimum_size = Vector2(112, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06axs")
+
+[node name="Categories" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+script = ExtResource("2_753f5")
+
+[node name="All" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("3_wmbwl")
+icon_alignment = 1
+
+[node name="Mushrooms" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("4_l1wbg")
+icon_alignment = 1
+
+[node name="Crafters" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("5_opkv6")
+icon_alignment = 1
+
+[node name="Natural" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("6_k4w6l")
+icon_alignment = 1
+
+[node name="Lights" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("7_lsd7f")
+icon_alignment = 1
+
+[node name="Other" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("8_arbep")
+icon_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3nctf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="ProductContainer" type="GridContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 3
+
+[node name="ConfirmPanel" type="PanelContainer" parent="."]
+layout_mode = 2
