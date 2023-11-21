@@ -5,11 +5,11 @@ signal filter_changed(filter: Inventory.Filter)
 
 func _ready() -> void:
 	for child in get_children():
-		child.pressed.connect(_on_button_pressed.bind(child))
-	_on_button_pressed.call_deferred($All)
+		child.button_down.connect(_on_button_down.bind(child))
+	_on_button_down.call_deferred($All)
 	
 	
-func _on_button_pressed(button: Button) ->  void:
+func _on_button_down(button: Button) ->  void:
 	for child in get_children():
 		child.disabled = false
 		
