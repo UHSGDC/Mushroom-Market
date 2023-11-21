@@ -100,5 +100,8 @@ func is_soil(id: ID) -> bool:
 func is_dirt(id: ID) -> bool:
 	return id == ID.DIRT
 	
+func is_natural(id: ID) -> bool:
+	return is_path(id) or is_soil(id)
+	
 func is_mushroom(id: ID) -> bool:
 	return id >= 70 and id < 90
