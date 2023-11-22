@@ -30,7 +30,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 texture = SubResource("CompressedTexture2D_twsrj")
-expand_mode = 1
 stretch_mode = 5
 
 [node name="Count" type="Label" parent="."]

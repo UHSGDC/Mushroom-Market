@@ -45,7 +45,7 @@ func _on_item_selected(item: Items.ID) -> void:
 		$Selected.hide()
 
 
-func initiliaze(item: Items.ID, _count: int) -> void:
+func initialize(item: Items.ID, _count: int) -> void:
 	id = item
 	item_data = Items.get_item_data(item)
 	$Icon.texture = item_data.item_texture

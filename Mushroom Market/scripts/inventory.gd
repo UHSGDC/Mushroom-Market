@@ -36,7 +36,7 @@ func change_item(id: Items.ID, count: int) -> void:
 func _new_item(id: Items.ID, count: int) -> void:
 	var item: InventoryItem = item_scene.instantiate()
 	item_container.add_child(item)
-	item.initiliaze(id, count)
+	item.initialize(id, count)
 	
 	
 func _on_filter_changed(filter: Filter) -> void:
