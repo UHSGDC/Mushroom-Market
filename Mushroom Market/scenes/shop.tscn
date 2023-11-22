@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ntf5j65oo0ii"]
+[gd_scene load_steps=11 format=3 uid="uid://ntf5j65oo0ii"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_06axs"]
 [ext_resource type="Script" path="res://scripts/categories.gd" id="2_753f5"]
+[ext_resource type="PackedScene" uid="uid://bkbmlgxtc2fsn" path="res://scenes/shop_product.tscn" id="2_cu242"]
 [ext_resource type="Texture2D" uid="uid://bqcoc2c0nlur1" path="res://art/ui/CategoryAll.tres" id="3_wmbwl"]
 [ext_resource type="Texture2D" uid="uid://cm7uk3s2ipyfd" path="res://art/ui/CategoryMushrooms.tres" id="4_l1wbg"]
 [ext_resource type="Texture2D" uid="uid://cwcvnyxqhpuii" path="res://art/ui/CategoryCrafters.tres" id="5_opkv6"]
@@ -25,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06axs")
+product_scene = ExtResource("2_cu242")
 
 [node name="Categories" type="GridContainer" parent="."]
 layout_mode = 2
