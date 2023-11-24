@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ntf5j65oo0ii"]
+[gd_scene load_steps=15 format=3 uid="uid://ntf5j65oo0ii"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_06axs"]
 [ext_resource type="Script" path="res://scripts/categories.gd" id="2_753f5"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cyrmwe16bjsfk" path="res://art/ui/CategoryNatural.tres" id="6_k4w6l"]
 [ext_resource type="Texture2D" uid="uid://sh52l32tt6lj" path="res://art/ui/CategoryLights.tres" id="7_lsd7f"]
 [ext_resource type="Texture2D" uid="uid://brqpbsh6dod54" path="res://art/ui/CategoryOther.tres" id="8_arbep"]
+[ext_resource type="Script" path="res://scripts/shop_buy_panel.gd" id="10_wjyot"]
+[ext_resource type="Texture2D" uid="uid://duybj4214ehie" path="res://art/items/RedSoil.png" id="11_5x8og"]
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="12_1wgm5"]
+[ext_resource type="Texture2D" uid="uid://crfafnd5mq8h" path="res://art/ui/Money.tres" id="13_g5xxk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3nctf"]
 content_margin_left = 3.0
@@ -96,5 +100,47 @@ theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
 columns = 3
 
-[node name="ConfirmPanel" type="PanelContainer" parent="."]
+[node name="BuyButton" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+focus_mode = 0
+script = ExtResource("10_wjyot")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BuyButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="BuyButton/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("11_5x8og")
+stretch_mode = 5
+
+[node name="For" type="Label" parent="BuyButton/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_1wgm5")
+theme_override_font_sizes/font_size = 13
+text = "for"
+vertical_alignment = 1
+
+[node name="MoneyIcon" type="TextureRect" parent="BuyButton/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("13_g5xxk")
+stretch_mode = 5
+
+[node name="Price" type="Label" parent="BuyButton/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_1wgm5")
+theme_override_font_sizes/font_size = 13
+text = "x 10"
+vertical_alignment = 1
+
+[connection signal="pressed" from="BuyButton" to="BuyButton" method="_on_pressed"]

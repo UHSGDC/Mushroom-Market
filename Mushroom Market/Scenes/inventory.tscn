@@ -92,6 +92,8 @@ columns = 3
 [node name="Shovel" type="Button" parent="."]
 layout_mode = 2
 focus_mode = 0
+theme_override_fonts/font = ExtResource("4_8w4cs")
+theme_override_font_sizes/font_size = 26
 text = "Shovel"
 icon_alignment = 1
 

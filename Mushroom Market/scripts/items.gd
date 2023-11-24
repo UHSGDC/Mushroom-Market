@@ -81,12 +81,14 @@ func get_id_from_tile(tile_id: int) -> ID:
 func get_data_from_tile(tile_id: int) -> ItemData:
 	return get_item_data(get_id_from_tile(tile_id))
 
-
 func is_crafter(id: ID) -> bool:
 	return id >= 10 and id < 20
 	
 func is_light(id: ID) -> bool:
 	return id >= 20 and id < 30
+	
+func is_misc(id: ID) -> bool:
+	return id >= 30 and id < 40
 	
 func is_whole(id: ID) -> bool:
 	return id >= 40 and id < 70

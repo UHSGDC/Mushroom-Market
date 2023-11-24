@@ -23,7 +23,7 @@ var day: int :
 		day_changed.emit(value)
 		
 func _ready() -> void:
-	set_deferred("money", 0)
+	set_deferred("money", 20)
 	set_deferred("level", 0)
 	set_deferred("day", 0)
 

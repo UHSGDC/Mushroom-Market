@@ -1,13 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkbmlgxtc2fsn"]
+[gd_scene load_steps=4 format=3 uid="uid://bkbmlgxtc2fsn"]
 
 [ext_resource type="Script" path="res://scripts/shop_product.gd" id="1_cky6p"]
 [ext_resource type="Texture2D" uid="uid://duybj4214ehie" path="res://art/items/RedSoil.png" id="2_m5l6l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjicj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.878431, 0.756863, 0.317647, 1)
 
 [node name="Product" type="Button"]
 custom_minimum_size = Vector2(30, 30)
 offset_right = 8.0
 offset_bottom = 8.0
+focus_mode = 0
 script = ExtResource("1_cky6p")
+
+[node name="Selected" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cjicj")
 
 [node name="Icon" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(24, 24)

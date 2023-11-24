@@ -12,3 +12,4 @@ use_tags = Array[int]([0])
 place_mode = 0
 tile_id = 4
 raw_texture = ExtResource("1_3may3")
+price = 2
