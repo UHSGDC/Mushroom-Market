@@ -68,4 +68,5 @@ func _on_filter_changed(filter: Filter) -> void:
 		
 
 func _on_shovel_pressed() -> void:
+	Global.item_selected.emit(Items.ID.NO_ITEM)
 	Global.shovel_selected.emit()
