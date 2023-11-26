@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://de7ji27oe23mt"]
+[gd_scene load_steps=2 format=3 uid="uid://de7ji27oe23mt"]
+
+[ext_resource type="Script" path="res://scripts/customer.gd" id="1_8ckx2"]
 
 [node name="Customer" type="Sprite2D"]
+offset = Vector2(0, -16)
+script = ExtResource("1_8ckx2")

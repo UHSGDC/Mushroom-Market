@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd5h2l8qpe0rb"]
+[gd_scene load_steps=4 format=3 uid="uid://cd5h2l8qpe0rb"]
 
 [ext_resource type="Texture2D" uid="uid://dfduvthsdupij" path="res://art/market/market-mockup.png" id="1_5chwq"]
+[ext_resource type="Script" path="res://scripts/customer_manager.gd" id="2_vh0hi"]
+[ext_resource type="PackedScene" uid="uid://de7ji27oe23mt" path="res://scenes/customer.tscn" id="3_0uonn"]
 
 [node name="Market" type="CanvasLayer"]
 scale = Vector2(2, 2)
@@ -13,10 +15,11 @@ texture = ExtResource("1_5chwq")
 [node name="CustomerStart" type="Marker2D" parent="."]
 position = Vector2(9, 139)
 
-[node name="Customers" type="Node2D" parent="."]
+[node name="CustomerManager" type="Node2D" parent="."]
 position = Vector2(90, 90)
-
-[node name="Customer" type="Sprite2D" parent="Customers"]
+script = ExtResource("2_vh0hi")
+customer_start_path = NodePath("../CustomerStart")
+customer_scene = ExtResource("3_0uonn")
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(90, 90)
