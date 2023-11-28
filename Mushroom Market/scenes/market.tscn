@@ -13,7 +13,13 @@ position = Vector2(90, 90)
 texture = ExtResource("1_5chwq")
 
 [node name="CustomerStart" type="Marker2D" parent="."]
-position = Vector2(9, 139)
+position = Vector2(-36, 140)
+
+[node name="CustomerTalk" type="Marker2D" parent="."]
+position = Vector2(80, 140)
+
+[node name="CustomerLeave" type="Marker2D" parent="."]
+position = Vector2(220, 140)
 
 [node name="CustomerManager" type="Node2D" parent="."]
 position = Vector2(90, 90)
@@ -23,10 +29,3 @@ customer_scene = ExtResource("3_0uonn")
 
 [node name="Foreground" type="Sprite2D" parent="."]
 position = Vector2(90, 90)
-
-[node name="Dialog" type="PanelContainer" parent="."]
-offset_left = 2.0
-offset_top = 4.0
-offset_right = 177.0
-offset_bottom = 64.0
-size_flags_horizontal = 3

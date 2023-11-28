@@ -24,53 +24,74 @@ enum Species {
 	CAECILIAN,
 }
 
-enum Type {
-	SELLING,
-	TRADING,
-	BUYING
-}
-
 const WANT_WEIGHTS: Dictionary = {
 	Species.AXOLOTL : [1, 4, 3, 1, 2],
 	Species.TOAD : [2, 2, 2, 3, 2],
 	Species.CAECILIAN : [4, 1, 2, 1, 1],
 }
 
-const NAMES: Array[String] = ["Nick", "McGuffrey", "Boat", "John", "Jack", "Jake"]
-var available_names: Array[String]
-
 var want: Want
 var ideal_want: Items.ID
 var gives: Array[Give]
 var species: Species
-var type: Type
 
 
-func _ready() -> void:
-	call_deferred("initialize")
-
-func initialize() -> void:
+func initialize(_name: String) -> void:
 	species = Species.values().pick_random()
-	want = _pick_random_want([1, 1, 1, 1, 1])
-	name = _get_random_name()
-	texture = load("res://art/market/FancyToad.png")
+	
+	name = _name
+	texture = load("res://art/market/FancyToad.png") # TEMPORARY, This needs to be a random texture based on species
+	
+	want = _pick_random_want(WANT_WEIGHTS[species])
+	ideal_want = _get_ideal_want(want)
+	gives = _get_random_gives(want)
 
 
-func _get_random_name() -> String:
-	if available_names.is_empty():
-		available_names = NAMES.duplicate()
-	available_names.shuffle()
-	return available_names.pop_back()
+# TEMPORARY
+func _get_ideal_want(want: Want) -> Items.ID:
+	match want:
+		Want.MONEY:
+			return Items.ID.NO_ITEM
+		Want.MUSHROOM:
+			return Items.ID.PURPLE_MUSHROOM
+		_:
+			return Items.ID.STONE_PATH # Placeholder, because I do not have the potions/drinks/cures implemented
 
 
-func _pick_random_want(weights: Array[int]) -> Want:
+func _get_random_gives(want: Want) -> Array[Give]:
+	var randomized_gives: Array[Give]
+	for value in Give.values(): randomized_gives.append(value)
+	
+	randomized_gives.shuffle()
+	# Remove money as a give option if the customer wants money
+	if want == Want.MONEY:
+		randomized_gives.remove_at(randomized_gives.find(Give.MONEY))
+	
+	var random_number := randf()
+	if random_number > 0.8:
+		randomized_gives.resize(3)
+	elif random_number > 0.4:
+		randomized_gives.resize(2)
+	else:
+		randomized_gives.resize(1)
+	
+	return randomized_gives
+
+
+func _pick_random_want(weights: Array) -> Want:
+	# temp code
+	var _weights = weights.duplicate()
+	_weights.resize(2)
+	var wants = Want.values()
+	wants.resize(2)
+	# end of temp code
 	var sum := 0
-	for value in weights:
+	for value in _weights:
 		sum += value
 	
 	var rnd := randf() * sum
 	var summer := 0
-	for value in Want.values():
+	for value in wants:
 		summer += weights[value]
 		if summer > rnd:
 			return value
