@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqwbb1xy1slqc"
-path="res://.godot/imported/PurpleMushroom.png-03dc06eda3664fb87a106b0ba0f86a89.ctex"
+uid="uid://cygo6oh3juvkx"
+path="res://.godot/imported/eggplantshroom.png-e989a87b1018ab453998816702988868.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/items/PurpleMushroom.png"
-dest_files=["res://.godot/imported/PurpleMushroom.png-03dc06eda3664fb87a106b0ba0f86a89.ctex"]
+source_file="res://art/items/mushrooms/eggplantshroom.png"
+dest_files=["res://.godot/imported/eggplantshroom.png-e989a87b1018ab453998816702988868.ctex"]
 
 [params]
 

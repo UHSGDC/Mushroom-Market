@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k57vcuknbwuj"
-path="res://.godot/imported/Sprite-0001.png-db642455c49bcf1337fde7bf15f1fc37.ctex"
+uid="uid://dygbk33d6qok4"
+path="res://.godot/imported/light green shroom.png-b5c04c92815313e264db105a8298e1ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/items/Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-db642455c49bcf1337fde7bf15f1fc37.ctex"]
+source_file="res://art/items/mushrooms/light green shroom.png"
+dest_files=["res://.godot/imported/light green shroom.png-b5c04c92815313e264db105a8298e1ee.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

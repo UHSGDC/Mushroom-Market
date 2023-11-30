@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c743uqepftv3l"
-path="res://.godot/imported/path.png-a75d39b6c39eff495c9f707fa16e8060.ctex"
+uid="uid://b5x1007isihfn"
+path="res://.godot/imported/PurpleSoil.png-f276d6d7e1346e82d100881820d885cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/items/path.png"
-dest_files=["res://.godot/imported/path.png-a75d39b6c39eff495c9f707fa16e8060.ctex"]
+source_file="res://art/items/PurpleSoil.png"
+dest_files=["res://.godot/imported/PurpleSoil.png-f276d6d7e1346e82d100881820d885cb.ctex"]
 
 [params]
 

@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://ckjkqrxkj1wlb" path="res://art/items/Composter.png" id="1_76cb6"]
 [ext_resource type="Texture2D" uid="uid://dr0d8rh7pe1oy" path="res://art/items/Cauldron.png" id="1_qx46l"]
-[ext_resource type="Texture2D" uid="uid://c743uqepftv3l" path="res://art/items/path.png" id="2_gq7ni"]
-[ext_resource type="Texture2D" uid="uid://d24o8itrjvslv" path="res://art/items/tile test.png" id="2_wnq7t"]
-[ext_resource type="Texture2D" uid="uid://bqwbb1xy1slqc" path="res://art/items/PurpleMushroom.png" id="3_cm3p0"]
+[ext_resource type="Texture2D" uid="uid://c743uqepftv3l" path="res://art/items/StonePath.png" id="2_ut50p"]
+[ext_resource type="Texture2D" uid="uid://d24o8itrjvslv" path="res://art/items/Dirt.png" id="4_qapro"]
+[ext_resource type="Texture2D" uid="uid://bqwbb1xy1slqc" path="res://art/items/mushrooms/PurpleMushroom.png" id="5_2xlx7"]
 [ext_resource type="Texture2D" uid="uid://duybj4214ehie" path="res://art/items/RedSoil.png" id="6_octto"]
 [ext_resource type="Texture2D" uid="uid://defi1lilewa6h" path="res://art/items/BlueLamp.png" id="7_da37s"]
 
@@ -32,7 +32,7 @@ texture_region_size = Vector2i(8, 12)
 0:1/0/texture_origin = Vector2i(0, -2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ub8s5"]
-texture = ExtResource("2_gq7ni")
+texture = ExtResource("2_ut50p")
 texture_region_size = Vector2i(8, 12)
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(0, -2)
@@ -53,14 +53,14 @@ texture_region_size = Vector2i(8, 12)
 0:2/0/texture_origin = Vector2i(0, -2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rh562"]
-texture = ExtResource("2_wnq7t")
+texture = ExtResource("4_qapro")
 texture_region_size = Vector2i(8, 12)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -2)
 0:0/0/y_sort_origin = -4
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qeyjd"]
-texture = ExtResource("3_cm3p0")
+texture = ExtResource("5_2xlx7")
 texture_region_size = Vector2i(8, 12)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -2)
