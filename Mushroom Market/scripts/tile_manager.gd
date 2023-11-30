@@ -125,7 +125,6 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 					elif atlas_coords == Vector2i(0, 1):
 						if tile_above_id < 0:
 							layer.set_cell(0, _current_tile)
-							Global.change_inventory_item.call(Items.ID.DIRT, 1)
 						else:
 							print("cant remove block when there are tiles above it")
 							return
@@ -135,7 +134,6 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 					elif atlas_coords == Vector2i(0, 2):
 						if tile_above_id < 0:
 							layer.set_cell(0, _current_tile)
-							Global.change_inventory_item.call(Items.ID.DIRT, 1)
 						else:
 							print("cant remove block when there are tiles above it")
 							return
@@ -150,19 +148,15 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 					var output := 1
 					if Items.get_id_from_tile(layers[layer_index - 1].get_cell_source_id(0, _current_tile)) == Items.ID.GREEN_SOIL:
 						output *= 2
-					Global.change_inventory_item.call(Items.get_item_data(item_id).item_drop, output)
 				layer.set_cell(0, _current_tile)
 			else:
 				print("cant remove block when there are tiles above it")
 				return
-					
-			Global.change_inventory_item.call(item_id, 1)		
 		Mode.SELECT:
 			if layer.get_cell_atlas_coords(0, _current_tile) == Vector2i.DOWN * 2 and (Items.is_mushroom(item_id) or Items.is_crafter(item_id)):
 				var output := 1
 				if Items.get_id_from_tile(layers[layer_index - 1].get_cell_source_id(0, _current_tile)) == Items.ID.GREEN_SOIL:
 					output *= 2
-				Global.change_inventory_item.call(Items.get_item_data(item_id).item_drop, output)
 				layer.set_cell(0, _current_tile, tile_id, Vector2i(0, 0))
 			else:
 				print("selecting tile")
@@ -173,7 +167,6 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 			print("modify this shroom!!!")
 		Mode.PATH:
 			layer.set_cell(0, _current_tile, tile.tile_id, Vector2i(0, path_placement))
-			Global.change_inventory_item.call(tile.id, -1)
 		_:
 			layer.set_cell(0, _current_tile, tile.tile_id, Vector2i(0, 0))
 			if Items.is_light(tile.id):
@@ -181,7 +174,7 @@ func _edit_tile_at_mouse(layer_index: int, layer_list: Array[TileMap]) -> void:
 				light.global_position = _current_tile * _tile_size + Vector2i.UP * layer_index * _tile_size / 2 + Vector2i.ONE * _tile_size / 2 + Vector2i.DOWN * _tile_size / 2
 				light_tile_to_scene[_current_tile] = light
 				
-			Global.change_inventory_item.call(tile.id, -1)
+			
 	
 	
 func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
@@ -216,6 +209,8 @@ func _check_for_tiles(layer_list: Array[TileMap], tile_size: int) -> int:
 						i += 1
 					else:
 						break
+				elif tile_id == -1 and i == 0 and mode == Mode.DIRT:
+					_current_tile = tile_pos
 				else:
 					continue
 					

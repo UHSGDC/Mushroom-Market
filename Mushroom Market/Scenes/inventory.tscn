@@ -26,6 +26,7 @@ script = ExtResource("1_twwlh")
 item_scene = ExtResource("2_dkih0")
 
 [node name="Filters" type="GridContainer" parent="."]
+visible = false
 layout_mode = 2
 columns = 2
 script = ExtResource("3_2wfho")
@@ -51,6 +52,7 @@ text = "Placeables"
 alignment = 2
 
 [node name="Sellables" type="Button" parent="Filters"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

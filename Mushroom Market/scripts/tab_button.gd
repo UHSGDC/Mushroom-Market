@@ -11,13 +11,13 @@ const NORMAL_COLOR: Color = Color8(125, 125, 125)
 var hovered: bool = false :
 	set(value):
 		hovered = value
-		style.border_width_top = 4 if value or selected else 12
+		style.border_width_top = 4 if value or selected else 4
 
 var selected: bool = false : 
 	set(value):
 		selected = value
 		style.bg_color = SELECT_COLOR if value else NORMAL_COLOR
-		style.border_width_top = 4 if value or hovered else 12
+		style.border_width_top = 4 if value or hovered else 4
 
 @onready var style = normal_style
 

@@ -1,12 +1,85 @@
-[gd_scene load_steps=8 format=3 uid="uid://dt7wrchnkcgg7"]
+[gd_scene load_steps=19 format=3 uid="uid://dt7wrchnkcgg7"]
 
 [ext_resource type="PackedScene" uid="uid://cd5h2l8qpe0rb" path="res://scenes/market.tscn" id="1_goi7o"]
 [ext_resource type="Script" path="res://main.gd" id="1_ka5i3"]
 [ext_resource type="PackedScene" uid="uid://b1r0b3dau4ln3" path="res://scenes/garden.tscn" id="1_w66gk"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="2_8ig7r"]
 [ext_resource type="PackedScene" uid="uid://cm8ygqjm7d1v0" path="res://scenes/menus.tscn" id="2_mn65f"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="3_ck5hr"]
 [ext_resource type="Script" path="res://scripts/context_info.gd" id="4_ovufc"]
-[ext_resource type="PackedScene" uid="uid://bpo4pa8wtrk2d" path="res://scenes/dialog_box.tscn" id="7_pg3tv"]
+[ext_resource type="AudioStream" uid="uid://dwsrustma1uak" path="res://garden.wav" id="7_j1emf"]
+
+[sub_resource type="Gradient" id="Gradient_43knk"]
+offsets = PackedFloat32Array(0, 0.509434, 1)
+colors = PackedColorArray(0.838397, 0.800451, 0.752226, 1, 0.505882, 0.894118, 0.780392, 1, 0.788235, 0.956863, 0.780392, 0.615686)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0gy5c"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b2rc1"]
+width = 10000
+height = 400
+seamless = true
+color_ramp = SubResource("Gradient_43knk")
+noise = SubResource("FastNoiseLite_0gy5c")
+
+[sub_resource type="Gradient" id="Gradient_sweg0"]
+offsets = PackedFloat32Array(0, 0.974843)
+colors = PackedColorArray(0.835294, 0.352941, 0.780392, 1, 0.278431, 0.670588, 0.780392, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_06kbv"]
+width = 10000
+height = 400
+seamless = true
+color_ramp = SubResource("Gradient_sweg0")
+noise = SubResource("FastNoiseLite_0gy5c")
+
+[sub_resource type="GDScript" id="GDScript_icrkj"]
+script/source = "extends Sprite2D
+
+func _ready() -> void:
+	var tween := create_tween()
+	tween.set_loops()
+	tween.tween_property(self, \"position\", Vector2(-10000, 0), 300)
+	tween.tween_property(self, \"position\", Vector2(0, 0), 0)
+"
+
+[sub_resource type="Shader" id="Shader_q1uhl"]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise_img;
+uniform float speed = 1.0;
+uniform vec4 smoke_color;
+
+void fragment(){
+	vec2 uv1 = vec2(UV.x + TIME*speed, UV.y);
+	vec2 uv2 = vec2(UV.x - TIME*speed, UV.y);
+	vec2 uv3 = vec2(UV.x, UV.y + TIME*speed);
+	
+	
+	float noise_r = texture( noise_img, uv1 ).r;
+	float noise_g = texture( noise_img, uv2 ).g;
+	float noise_b = texture( noise_img, uv3 ).b;
+	
+	vec3 new_color = vec3(noise_r, noise_g, noise_b);
+	
+	float new_alpha = noise_r * noise_g * noise_b;
+	
+	COLOR.rgb = smoke_color.rgb;//texture(TEXTURE, UV).rgb;
+	COLOR.a = clamp(new_alpha * 5.0 * texture(TEXTURE, UV).a, 0.0, 1.0);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ls18h"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b26bn"]
+seamless = true
+noise = SubResource("FastNoiseLite_ls18h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekomw"]
+shader = SubResource("Shader_q1uhl")
+shader_parameter/speed = 1.0
+shader_parameter/smoke_color = Vector4(255, 100, 20, 0)
+shader_parameter/noise_img = SubResource("NoiseTexture2D_b26bn")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ka5i3")
@@ -28,7 +101,19 @@ size_2d_override = Vector2i(240, 180)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
+[node name="Background2" type="Sprite2D" parent="World/SubViewport"]
+texture = SubResource("NoiseTexture2D_b2rc1")
+offset = Vector2(191.667, 0)
+script = ExtResource("2_8ig7r")
+
+[node name="Background" type="Sprite2D" parent="World/SubViewport"]
+modulate = Color(1, 1, 1, 0.839216)
+texture = SubResource("NoiseTexture2D_06kbv")
+offset = Vector2(191.667, 0)
+script = SubResource("GDScript_icrkj")
+
 [node name="Garden" parent="World/SubViewport" instance=ExtResource("1_w66gk")]
+material = SubResource("ShaderMaterial_ekomw")
 scale = Vector2(1, 1)
 
 [node name="Market" parent="World/SubViewport" instance=ExtResource("1_goi7o")]
@@ -55,7 +140,18 @@ theme_override_font_sizes/font_size = 13
 horizontal_alignment = 2
 script = ExtResource("4_ovufc")
 
-[node name="DialogBox" parent="." instance=ExtResource("7_pg3tv")]
-visible = false
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_j1emf")
+autoplay = true
+
+[node name="Button" type="CheckButton" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_ck5hr")
+theme_override_font_sizes/font_size = 13
+button_pressed = true
+text = "Music"
 
 [connection signal="switch_pressed" from="Menus" to="." method="_on_menus_switch_pressed"]
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

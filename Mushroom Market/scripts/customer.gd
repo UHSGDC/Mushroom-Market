@@ -34,10 +34,6 @@ var ideal_want: Items.ID
 var gives: Array[Give]
 var species: Species
 
-func _ready() -> void:
-	initialize.call_deferred("Robert")
-	talk_to_player.call_deferred()
-
 
 func initialize(_name: String) -> void:
 	species = Species.values().pick_random()
