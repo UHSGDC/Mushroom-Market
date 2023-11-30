@@ -15,7 +15,6 @@ enum Give {
 	NATURAL,
 	LIGHT,
 	MUSHROOM_FOOD,
-	KEY
 }
 
 enum Species {
@@ -35,6 +34,10 @@ var ideal_want: Items.ID
 var gives: Array[Give]
 var species: Species
 
+func _ready() -> void:
+	initialize.call_deferred("Robert")
+	talk_to_player.call_deferred()
+
 
 func initialize(_name: String) -> void:
 	species = Species.values().pick_random()
@@ -43,12 +46,12 @@ func initialize(_name: String) -> void:
 	texture = load("res://art/market/FancyToad.png") # TEMPORARY, This needs to be a random texture based on species
 	
 	want = _pick_random_want(WANT_WEIGHTS[species])
-	ideal_want = _get_ideal_want(want)
-	gives = _get_random_gives(want)
+	ideal_want = _get_ideal_want()
+	gives = _get_random_gives()
 
 
 # TEMPORARY
-func _get_ideal_want(want: Want) -> Items.ID:
+func _get_ideal_want() -> Items.ID:
 	match want:
 		Want.MONEY:
 			return Items.ID.NO_ITEM
@@ -58,7 +61,7 @@ func _get_ideal_want(want: Want) -> Items.ID:
 			return Items.ID.STONE_PATH # Placeholder, because I do not have the potions/drinks/cures implemented
 
 
-func _get_random_gives(want: Want) -> Array[Give]:
+func _get_random_gives() -> Array[Give]:
 	var randomized_gives: Array[Give]
 	for value in Give.values(): randomized_gives.append(value)
 	
@@ -96,3 +99,83 @@ func _pick_random_want(weights: Array) -> Want:
 		if summer > rnd:
 			return value
 	return -1
+
+
+func talk_to_player() -> void:
+	Global.play_dialog.call(name, inital_statement(), ["Accept", "Decline"])
+
+
+func inital_statement() -> String:
+#	var give_text: String = ""
+#	for give in gives:
+#		if give_text != "":
+#			give_text += ", "
+#			if gives[-1] == give:
+#				give_text += "and "	
+#		give_text += Give.find_key(give).to_lower().replace("_", " ")
+#		if give != Give.MONEY and give != Give.MUSHROOM_FOOD:
+#			give_text += "s"
+#
+#	var want_text = Want.find_key(want).to_lower()
+#	if want != Want.MONEY:
+#		want_text += "s"
+	
+	var give_item := Items.get_item_data(get_give_item(gives.pick_random()))
+	var want_item := Items.get_item_data(get_want_item(want))
+	
+	var give_text: String = ""
+	var want_text: String = ""
+	
+	var give_count := 1
+	var want_count := 1
+	if (!want_item):
+		want_count = give_item.price
+		want_text = str(want_count) + " Moneys"
+		give_text = "1 " + give_item.name
+	elif (!give_item):
+		give_count = want_item.price
+		give_text = str(give_count) + " Moneys"
+		want_text = "1 " + want_item.name
+	else:
+		var price_diff: int = give_item.price - want_item.price
+		while(abs(price_diff) > 2):
+			if price_diff < 0:
+				give_count += 2
+			else:
+				want_count += 2
+			price_diff = give_item.price - want_item.price
+		
+		give_text = str(give_count) + " " + give_item.name
+		want_text = str(want_count) + " " + want_item.name
+		
+	return "I am looking for %s and I can give you %s. What do you think?" % [want_text, give_text]
+	
+const MUSHROOMS = [Items.ID.PURPLE_MUSHROOM]
+const MUSHROOM_SEEDS = [Items.ID.PURPLE_MUSHROOM_SEED]
+const NATURALS = [Items.ID.DIRT, Items.ID.STONE_PATH]
+const LIGHTS = [Items.ID.BLUE_LAMP]
+
+func get_give_item(give: Give) -> Items.ID:
+	match give:
+		Give.MONEY:
+			return Items.ID.NO_ITEM
+		Give.MUSHROOM_SEED:
+			return MUSHROOM_SEEDS.pick_random()
+		Give.NATURAL:
+			return NATURALS.pick_random()
+		Give.MUSHROOM_FOOD:
+			return Items.ID.MUSHROOM_FOOD
+		Give.LIGHT:
+			return LIGHTS.pick_random()
+	return Items.ID.NO_ITEM
+	
+
+func get_want_item(want: Want) -> Items.ID:
+	match want:
+		Want.MONEY:
+			return Items.ID.NO_ITEM
+		Want.MUSHROOM:
+			return MUSHROOMS.pick_random()	
+		_:
+			return Items.ID.NO_ITEM
+	

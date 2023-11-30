@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpo4pa8wtrk2d"]
+
+[ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="1_4s1tk"]
+[ext_resource type="Script" path="res://scripts/dialog_box.gd" id="1_grmcg"]
+[ext_resource type="Script" path="res://scripts/response_container.gd" id="3_76m40"]
+[ext_resource type="PackedScene" uid="uid://c1dxf20uy0ab2" path="res://scenes/response_button.tscn" id="4_ljmn0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stgdy"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj5dl"]
+content_margin_left = 6.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+
+[node name="DialogBox" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_grmcg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="DialogPanel" type="Panel" parent="Control"]
+layout_mode = 2
+offset_right = 344.0
+offset_bottom = 72.0
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_stgdy")
+
+[node name="TextOutput" type="Label" parent="Control/DialogPanel"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 308.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_4s1tk")
+theme_override_font_sizes/font_size = 13
+text = "Jeff is offering 20 bucks for 0 dollars. Do you accept?"
+autowrap_mode = 3
+
+[node name="NextIcon" type="Polygon2D" parent="Control/DialogPanel"]
+position = Vector2(328, 48)
+color = Color(0.576471, 0.576471, 0.576471, 1)
+polygon = PackedVector2Array(-8, 8, 0, 16, 8, 8)
+
+[node name="SpeakerName" type="PanelContainer" parent="Control"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 80.0
+offset_right = 72.0
+offset_bottom = 100.0
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nj5dl")
+
+[node name="Label" type="Label" parent="Control/SpeakerName"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4s1tk")
+theme_override_font_sizes/font_size = 13
+text = "Jeff"
+vertical_alignment = 1
+
+[node name="ResponseContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.977
+anchor_top = 0.233
+anchor_right = 0.977
+anchor_bottom = 0.233
+offset_left = -48.088
+offset_top = -0.152
+offset_right = -0.0880127
+offset_bottom = 23.848
+grow_horizontal = 0
+script = ExtResource("3_76m40")
+response_button_scene = ExtResource("4_ljmn0")

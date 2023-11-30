@@ -11,4 +11,4 @@ use_tags = Array[int]([0])
 place_mode = 3
 tile_id = 1
 raw_texture = ExtResource("1_kiav4")
-can_pick_up = true
+price = 2
