@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcjg5cdb3fofh"]
+[gd_scene load_steps=5 format=3 uid="uid://bcjg5cdb3fofh"]
 
 [ext_resource type="Script" path="res://scripts/inventory_item.gd" id="1_lgupy"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="2_jkjmo"]
@@ -6,8 +6,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vxf2"]
 border_color = Color(0.435294, 0.435294, 0.435294, 1)
 anti_aliasing = false
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_twsrj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_14tmu"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -24,12 +22,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_7vxf2")
 script = ExtResource("1_lgupy")
 
 [node name="Icon" type="TextureRect" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-texture = SubResource("CompressedTexture2D_twsrj")
 stretch_mode = 5
 
 [node name="Count" type="Label" parent="."]
