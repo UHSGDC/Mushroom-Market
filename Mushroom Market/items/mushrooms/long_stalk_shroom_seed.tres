@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://ccy2qk5tontdq"]
+
+[ext_resource type="Texture2D" uid="uid://blqtvekpp0btv" path="res://art/items/mushrooms/WarmColorShroom.png" id="1_bhajk"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_cue53"]
+
+[resource]
+script = ExtResource("2_cue53")
+name = "Long Stalk Shroom Seed"
+id = 83
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 27
+raw_texture = ExtResource("1_bhajk")
+price = -1

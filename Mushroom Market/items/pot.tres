@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c5lx36bc2eukl"]
+
+[ext_resource type="Script" path="res://scripts/item_data.gd" id="1_2mwkh"]
+[ext_resource type="Texture2D" uid="uid://dknc8wkeqi0oy" path="res://art/items/Pot.png" id="1_n753u"]
+
+[resource]
+script = ExtResource("1_2mwkh")
+name = "Pot"
+id = 12
+use_tags = Array[int]([0])
+place_mode = 5
+tile_id = 12
+raw_texture = ExtResource("1_n753u")
+price = -1

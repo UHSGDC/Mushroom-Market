@@ -12,7 +12,7 @@ enum Category {
 @export var product_scene: PackedScene
 
 var levels: Array = [
-	[Items.ID.DIRT, Items.ID.PURPLE_MUSHROOM_SEED],
+	[Items.ID.DIRT, Items.ID.PURPLE_SHROOM_SEED],
 	[Items.ID.STONE_PATH, Items.ID.BLUE_LAMP],
 	[Items.ID.RED_SOIL]
 ]

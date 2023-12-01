@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://bk776bdrgisxs"]
+
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="1_5utxs"]
+[ext_resource type="Texture2D" uid="uid://cmg1ba380l6ja" path="res://art/items/mushrooms/black white shroom.png" id="1_s48x2"]
+
+[resource]
+script = ExtResource("1_5utxs")
+name = "Checkers Shroom Seed"
+id = 71
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 14
+raw_texture = ExtResource("1_s48x2")
+price = -1

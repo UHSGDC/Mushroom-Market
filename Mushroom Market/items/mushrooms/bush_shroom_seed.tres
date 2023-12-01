@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://dcdcqmc3udqh5"]
+
+[ext_resource type="Texture2D" uid="uid://dygbk33d6qok4" path="res://art/items/mushrooms/light green shroom.png" id="1_j42yx"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_y512m"]
+
+[resource]
+script = ExtResource("2_y512m")
+name = "Bush Shroom Seed"
+id = 79
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 22
+raw_texture = ExtResource("1_j42yx")
+price = -1

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cc5ggpiaf1gvh"]
+
+[ext_resource type="Texture2D" uid="uid://qtr5qf13dqhk" path="res://art/items/Crate.png" id="1_c75v8"]
+[ext_resource type="Script" path="res://scripts/item_data.gd" id="1_loa56"]
+
+[resource]
+script = ExtResource("1_loa56")
+name = "Crate"
+id = 40
+use_tags = Array[int]([0])
+place_mode = 5
+tile_id = 8
+raw_texture = ExtResource("1_c75v8")
+price = -1

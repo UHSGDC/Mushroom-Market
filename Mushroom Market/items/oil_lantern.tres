@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LightData" load_steps=3 format=3 uid="uid://bg5tinmq15ki7"]
+
+[ext_resource type="Script" path="res://scripts/light_data.gd" id="1_6fska"]
+[ext_resource type="Texture2D" uid="uid://dk8lkry028ocw" path="res://art/items/OilLantern.png" id="1_tb077"]
+
+[resource]
+script = ExtResource("1_6fska")
+light_color = Color(1, 0.517647, 0, 1)
+name = "Oil Lantern"
+id = 22
+use_tags = Array[int]([0])
+place_mode = 5
+tile_id = 11
+raw_texture = ExtResource("1_tb077")
+price = -1

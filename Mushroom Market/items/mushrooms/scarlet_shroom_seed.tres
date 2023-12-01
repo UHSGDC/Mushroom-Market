@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://xc0ail6yv3ae"]
+
+[ext_resource type="Texture2D" uid="uid://bt806mhya7ji8" path="res://art/items/mushrooms/red shroom.png" id="1_8vvp1"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_1oswg"]
+
+[resource]
+script = ExtResource("2_1oswg")
+name = "Scarlet Shroom Seed"
+id = 80
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 24
+raw_texture = ExtResource("1_8vvp1")
+price = -1

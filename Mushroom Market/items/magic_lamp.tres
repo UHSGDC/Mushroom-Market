@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LightData" load_steps=3 format=3 uid="uid://cdt1l0f1xqgn0"]
+
+[ext_resource type="Texture2D" uid="uid://dokpn212x21c4" path="res://art/items/MagicLamp.png" id="1_tdum0"]
+[ext_resource type="Script" path="res://scripts/light_data.gd" id="1_tswxf"]
+
+[resource]
+script = ExtResource("1_tswxf")
+light_color = Color(0, 1, 0.94902, 1)
+name = "Magic Lamp"
+id = 21
+use_tags = Array[int]([0])
+place_mode = 5
+tile_id = 10
+raw_texture = ExtResource("1_tdum0")
+price = -1

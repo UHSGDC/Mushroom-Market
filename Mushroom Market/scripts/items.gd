@@ -11,32 +11,64 @@ enum ID {
 	NO_ITEM = -1,
 	CAULDRON = 10, # 10 - 19 is reserved for crafting items
 	COMPOSTER,
-	FERMENTER,
+	POT,
 	BLUE_LAMP = 20, # 20 - 29 is reserved for lights and lamps
 	MAGIC_LAMP,
 	OIL_LANTERN,
-	KEY = 30, # 30 - 39 is reserved for misc. items
-	MUSHROOM_FOOD,
 	CRATE = 40, # 40 - 49 is for all misc. whole tiles
-	GRAVEL_PATH = 50, # 50 - 59 is reserved for path tiles
+	COBBLESTONE_PATH = 50, # 50 - 59 is reserved for path tiles
 	STONE_PATH,
 	DIRT = 60, # 60 - 69 is reserved for dirt and soil tiles
 	RED_SOIL,
 	PURPLE_SOIL,
 	GREEN_SOIL,
-	PURPLE_MUSHROOM_SEED = 70, # 70-89 is reserved for mushroom seeds
-	PURPLE_MUSHROOM = 90, # 90 and up is reserved for tradeable, craftable and other items
+	PURPLE_SHROOM_SEED = 70, # 70-89 is reserved for mushroom seeds
+	CHECKERS_SHROOM_SEED,
+	BRY_SHROOM_SEED,
+	CROW_SHROOM_SEED,
+	DERP_SHROOM_SEED,
+	DESERT_SHROOM_SEED,
+	EGGPLANT_SHROOM_SEED,
+	EGG_SHROOM_SEED,
+	MOSSY_SHROOM_SEED,
+	BUSH_SHROOM_SEED,
+	SCARLET_SHROOM_SEED,
+	SKULL_SHROOM_SEED,
+	TOAD_SHROOM_SEED,
+	LONG_STALK_SHROOM_SEED,
+	UMBRELLA_SHROOM_SEED
 }
 
 var item_data: Array[ItemData] = [
 	preload("res://items/dirt.tres"),
 	preload("res://items/red_soil.tres"),
-	preload("res://items/purple_mushroom.tres"),
-	preload("res://items/purple_mushroom_seed.tres"),
 	preload("res://items/composter.tres"),
 	preload("res://items/cauldron.tres"),
 	preload("res://items/stone_path.tres"),
+	preload("res://items/cobblestone_path.tres"),
 	preload("res://items/blue_lamp.tres"),
+	preload("res://items/mushrooms/purple_shroom_seed.tres"),
+	preload("res://items/crate.tres"),
+	preload("res://items/green_soil.tres"),
+	preload("res://items/magic_lamp.tres"),
+	preload("res://items/oil_lantern.tres"),
+	preload("res://items/pot.tres"),
+	preload("res://items/purple_soil.tres"),
+	preload("res://items/mushrooms/bry_shroom_seed.tres"),
+	preload("res://items/mushrooms/bush_shroom_seed.tres"),
+	preload("res://items/mushrooms/checkers_shroom_seed.tres"),
+	preload("res://items/mushrooms/crow_shroom_seed.tres"),
+	preload("res://items/mushrooms/derp_shroom_seed.tres"),
+	preload("res://items/mushrooms/desert_shroom_seed.tres"),
+	preload("res://items/mushrooms/eggplant_shroom_seed.tres"),
+	preload("res://items/mushrooms/egg_shroom_seed.tres"),
+	preload("res://items/mushrooms/long_stalk_shroom_seed.tres"),
+	preload("res://items/mushrooms/mossy_shroom_seed.tres"),
+	preload("res://items/mushrooms/skull_shroom_seed.tres"),
+	preload("res://items/mushrooms/scarlet_shroom_seed.tres"),
+	preload("res://items/mushrooms/toad_shroom_seed.tres"),
+	preload("res://items/mushrooms/umbrella_shroom_seed.tres"),
+	
 ]
 
 var data_from_id: Dictionary
@@ -50,6 +82,7 @@ func initiliaze_item_dictionaries() -> void:
 	for item in item_data:
 		if item.use_tags.has(Use.TILEMAP):
 			if id_from_tile.has(item.tile_id):
+				print(ID.find_key(id_from_tile[item.tile_id]))
 				assert(false, "two tilemap items with same tile id")
 			id_from_tile[item.tile_id] = item.id
 		if data_from_id.has(item.id):
@@ -88,7 +121,7 @@ func is_light(id: ID) -> bool:
 	return id >= 20 and id < 30
 	
 func is_misc(id: ID) -> bool:
-	return id >= 30 and id < 40
+	return id >= 40 and id < 50
 	
 func is_whole(id: ID) -> bool:
 	return id >= 40 and id < 70

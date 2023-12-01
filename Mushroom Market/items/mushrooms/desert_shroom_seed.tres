@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://cd3gk2o3f4nyy"]
+
+[ext_resource type="Texture2D" uid="uid://w407fufv0nsd" path="res://art/items/mushrooms/desert bush shroom.png" id="1_nmw04"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_1qusw"]
+
+[resource]
+script = ExtResource("2_1qusw")
+name = "Desert Shroom Seed"
+id = 75
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 18
+raw_texture = ExtResource("1_nmw04")
+price = -1

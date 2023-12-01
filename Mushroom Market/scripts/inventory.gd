@@ -1,26 +1,16 @@
 class_name Inventory extends Container
 
-enum Filter {
-	ALL,
-	SELLABLES,
-	PLACEABLES,
-	OTHER
-}
-
 @export var item_scene: PackedScene
 
 @onready var item_container = $PanelContainer/ScrollContainer/ItemContainer
 
 func _ready() -> void:
 	Global.change_inventory_item = change_item
-	$Filters.filter_changed.connect(_on_filter_changed)
-	change_item(Items.ID.STONE_PATH, 1)
-	change_item(Items.ID.RED_SOIL, 1)
-	change_item(Items.ID.PURPLE_MUSHROOM_SEED, 1)
-	change_item(Items.ID.CAULDRON, 1)
-	change_item(Items.ID.COMPOSTER, 1)
-	change_item(Items.ID.BLUE_LAMP, 1)
-	change_item(Items.ID.DIRT, 1)
+	$Categories.category_changed.connect(_on_category_changed)
+	for value in Items.ID.values():
+		if value == Items.ID.NO_ITEM:
+			continue
+		change_item(value, 1)
 
 
 func change_item(id: Items.ID, count: int) -> void:
@@ -38,32 +28,44 @@ func _new_item(id: Items.ID, count: int) -> void:
 	item.initialize(id, count)
 	
 	
-func _on_filter_changed(filter: Filter) -> void:
+func _on_category_changed(filter: Shop.Category) -> void:
 	match filter:
-		Filter.ALL:
+		Shop.Category.ALL:
 			for child in item_container.get_children():
 				child.show()
-		Filter.SELLABLES:
+		Shop.Category.MUSHROOMS:
 			for child in item_container.get_children():
-				var item_data: ItemData = child.item_data
-				if item_data.use_tags.has(Items.Use.TRADEABLE):
+				if Items.is_mushroom(child.id):
 					child.show()
 				else:
 					child.hide()
-		Filter.PLACEABLES:
+		Shop.Category.CRAFTERS:
 			for child in item_container.get_children():
-				var item_data: ItemData = child.item_data
-				if item_data.use_tags.has(Items.Use.TILEMAP):
+				if Items.is_crafter(child.id):
 					child.show()
 				else:
 					child.hide()
-		Filter.OTHER:
+		Shop.Category.NATURAL:
 			for child in item_container.get_children():
-				var item_data: ItemData = child.item_data
-				if item_data.use_tags.has(Items.Use.OTHER):
+				if Items.is_natural(child.id):
 					child.show()
 				else:
 					child.hide()
+		Shop.Category.LIGHTS:
+			for child in item_container.get_children():
+				if Items.is_light(child.id):
+					child.show()
+				else:
+					child.hide()
+		Shop.Category.OTHER:
+			for child in item_container.get_children():
+				if Items.is_misc(child.id):
+					child.show()
+				else:
+					child.hide()
+			
+		
+			
 		
 
 func _on_shovel_pressed() -> void:

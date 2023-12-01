@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://vatf4jknuxac"]
+
+[ext_resource type="Script" path="res://scripts/item_data.gd" id="1_f4apd"]
+[ext_resource type="Texture2D" uid="uid://bh5ynfyl47o8b" path="res://art/items/GreenSoil.png" id="1_k6uvk"]
+
+[resource]
+script = ExtResource("1_f4apd")
+name = "Green Soil"
+id = 63
+use_tags = Array[int]([0])
+place_mode = 2
+tile_id = 9
+raw_texture = ExtResource("1_k6uvk")
+price = -1

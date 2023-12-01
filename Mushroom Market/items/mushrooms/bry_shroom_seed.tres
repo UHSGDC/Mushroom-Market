@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://67bq711gg4on"]
+
+[ext_resource type="Texture2D" uid="uid://c3k2fd0dar1eq" path="res://art/items/mushrooms/brown red yellow shroom.png" id="1_d0r7p"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_mrjlc"]
+
+[resource]
+script = ExtResource("2_mrjlc")
+name = "Bry Shroom Seed"
+id = 72
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 15
+raw_texture = ExtResource("1_d0r7p")
+price = -1

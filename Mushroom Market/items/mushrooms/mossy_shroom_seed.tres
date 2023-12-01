@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://5hdcwkggk0c3"]
+
+[ext_resource type="Texture2D" uid="uid://co2ovegxtf41d" path="res://art/items/mushrooms/GreenMushroom.png" id="1_kdm5c"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_kqldr"]
+
+[resource]
+script = ExtResource("2_kqldr")
+name = "Mossy Shroom Seed"
+id = 78
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 21
+raw_texture = ExtResource("1_kdm5c")
+price = -1

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://bmx3fa3qql2cp"]
+
+[ext_resource type="Texture2D" uid="uid://bl4omxpevjo5i" path="res://art/items/mushrooms/cyan derp shroom.png" id="1_3tf0g"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_4savr"]
+
+[resource]
+script = ExtResource("2_4savr")
+name = "Derp Shroom Seed"
+id = 74
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 17
+raw_texture = ExtResource("1_3tf0g")
+price = -1

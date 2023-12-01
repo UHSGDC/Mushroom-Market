@@ -34,8 +34,8 @@ script = ExtResource("1_8r5wb")
 layout_mode = 2
 
 [node name="Switch" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
+size_flags_vertical = 4
 focus_mode = 0
 icon = ExtResource("2_cc0sy")
 icon_alignment = 1

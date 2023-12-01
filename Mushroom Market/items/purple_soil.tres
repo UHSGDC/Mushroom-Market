@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c7r6gxie11q0b"]
+
+[ext_resource type="Script" path="res://scripts/item_data.gd" id="1_7bdi3"]
+[ext_resource type="Texture2D" uid="uid://b5x1007isihfn" path="res://art/items/PurpleSoil.png" id="1_ags88"]
+
+[resource]
+script = ExtResource("1_7bdi3")
+name = "Purple Soil"
+id = 62
+use_tags = Array[int]([0])
+place_mode = 2
+tile_id = 13
+raw_texture = ExtResource("1_ags88")
+price = -1

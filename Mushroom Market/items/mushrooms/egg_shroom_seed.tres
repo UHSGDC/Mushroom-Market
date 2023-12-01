@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://dytrciqaow71m"]
+
+[ext_resource type="Texture2D" uid="uid://busru3yt46e15" path="res://art/items/mushrooms/eggshroom.png" id="1_qo4mx"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_jrtoo"]
+
+[resource]
+script = ExtResource("2_jrtoo")
+name = "Egg Shroom Seed"
+id = 77
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 20
+raw_texture = ExtResource("1_qo4mx")
+price = -1

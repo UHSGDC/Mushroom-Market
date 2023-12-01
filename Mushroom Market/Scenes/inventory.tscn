@@ -1,9 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://6buwu2llx83k"]
+[gd_scene load_steps=12 format=3 uid="uid://6buwu2llx83k"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_twwlh"]
 [ext_resource type="PackedScene" uid="uid://bcjg5cdb3fofh" path="res://scenes/inventory_item.tscn" id="2_dkih0"]
-[ext_resource type="Script" path="res://scripts/filters.gd" id="3_2wfho"]
+[ext_resource type="Script" path="res://scripts/categories.gd" id="3_y40rs"]
+[ext_resource type="Texture2D" uid="uid://bqcoc2c0nlur1" path="res://art/ui/CategoryAll.tres" id="4_5tp2j"]
 [ext_resource type="FontFile" uid="uid://b6vcrxacfghvx" path="res://pixelade.ttf" id="4_8w4cs"]
+[ext_resource type="Texture2D" uid="uid://cm7uk3s2ipyfd" path="res://art/ui/CategoryMushrooms.tres" id="5_03mtw"]
+[ext_resource type="Texture2D" uid="uid://cwcvnyxqhpuii" path="res://art/ui/CategoryCrafters.tres" id="6_dlvvd"]
+[ext_resource type="Texture2D" uid="uid://cyrmwe16bjsfk" path="res://art/ui/CategoryNatural.tres" id="7_faluc"]
+[ext_resource type="Texture2D" uid="uid://sh52l32tt6lj" path="res://art/ui/CategoryLights.tres" id="8_enhr0"]
+[ext_resource type="Texture2D" uid="uid://brqpbsh6dod54" path="res://art/ui/CategoryOther.tres" id="9_i238u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kmoi"]
 content_margin_left = 3.0
@@ -25,50 +31,52 @@ grow_vertical = 2
 script = ExtResource("1_twwlh")
 item_scene = ExtResource("2_dkih0")
 
-[node name="Filters" type="GridContainer" parent="."]
-visible = false
+[node name="Categories" type="GridContainer" parent="."]
 layout_mode = 2
-columns = 2
-script = ExtResource("3_2wfho")
+columns = 3
+script = ExtResource("3_y40rs")
 
-[node name="All" type="Button" parent="Filters"]
+[node name="All" type="Button" parent="Categories"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_8w4cs")
-theme_override_font_sizes/font_size = 13
-text = "All
-"
+icon = ExtResource("4_5tp2j")
+icon_alignment = 1
 
-[node name="Placeables" type="Button" parent="Filters"]
+[node name="Mushrooms" type="Button" parent="Categories"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_8w4cs")
-theme_override_font_sizes/font_size = 13
-text = "Placeables"
-alignment = 2
+icon = ExtResource("5_03mtw")
+icon_alignment = 1
 
-[node name="Sellables" type="Button" parent="Filters"]
-visible = false
+[node name="Crafters" type="Button" parent="Categories"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_8w4cs")
-theme_override_font_sizes/font_size = 13
-text = "Sellables"
+icon = ExtResource("6_dlvvd")
+icon_alignment = 1
 
-[node name="Other" type="Button" parent="Filters"]
+[node name="Natural" type="Button" parent="Categories"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_8w4cs")
-theme_override_font_sizes/font_size = 13
-text = "Other"
+icon = ExtResource("7_faluc")
+icon_alignment = 1
+
+[node name="Lights" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("8_enhr0")
+icon_alignment = 1
+
+[node name="Other" type="Button" parent="Categories"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+icon = ExtResource("9_i238u")
+icon_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

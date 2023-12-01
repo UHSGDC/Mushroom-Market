@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://du1y3xupt155s"]
+
+[ext_resource type="Script" path="res://scripts/item_data.gd" id="1_mjaq3"]
+[ext_resource type="Texture2D" uid="uid://c552mybk004nf" path="res://art/items/CobblestonePath.png" id="1_s80dm"]
+
+[resource]
+script = ExtResource("1_mjaq3")
+name = "Cobblestone Path"
+id = 50
+use_tags = Array[int]([0])
+place_mode = 3
+tile_id = 7
+raw_texture = ExtResource("1_s80dm")
+price = -1

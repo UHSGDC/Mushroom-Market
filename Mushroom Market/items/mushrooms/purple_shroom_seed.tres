@@ -5,8 +5,7 @@
 
 [resource]
 script = ExtResource("1_7jgoh")
-item_drop = 90
-name = "Purple Mushroom Seed"
+name = "Purple Shroom Seed"
 id = 70
 use_tags = Array[int]([0])
 place_mode = 0

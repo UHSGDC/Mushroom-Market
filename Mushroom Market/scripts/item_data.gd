@@ -2,7 +2,7 @@ class_name ItemData extends Resource
 
 @export var name: String
 @export var id: Items.ID
-@export var use_tags: Array[Items.Use]
+@export var use_tags: Array[Items.Use] = [Items.Use.TILEMAP]
 @export var place_mode: TileManager.Mode
 @export var tile_id: int = -1
 @export var raw_texture: Texture : set = _set_raw_texture

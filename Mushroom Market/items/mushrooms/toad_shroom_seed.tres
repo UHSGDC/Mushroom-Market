@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MushroomData" load_steps=3 format=3 uid="uid://d1up0dcg8j1xg"]
+
+[ext_resource type="Texture2D" uid="uid://cmqu886r8bndj" path="res://art/items/mushrooms/ToadMushroom.png" id="1_4fg15"]
+[ext_resource type="Script" path="res://scripts/mushroom_data.gd" id="2_e3mme"]
+
+[resource]
+script = ExtResource("2_e3mme")
+name = "Toad Shroom Seed"
+id = 82
+use_tags = Array[int]([0])
+place_mode = 0
+tile_id = 26
+raw_texture = ExtResource("1_4fg15")
+price = -1

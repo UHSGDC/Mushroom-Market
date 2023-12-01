@@ -52,7 +52,7 @@ func _get_ideal_want() -> Items.ID:
 		Want.MONEY:
 			return Items.ID.NO_ITEM
 		Want.MUSHROOM:
-			return Items.ID.PURPLE_MUSHROOM
+			return Items.ID.NO_ITEM
 		_:
 			return Items.ID.STONE_PATH # Placeholder, because I do not have the potions/drinks/cures implemented
 
@@ -146,8 +146,8 @@ func inital_statement() -> String:
 		
 	return "I am looking for %s and I can give you %s. What do you think?" % [want_text, give_text]
 	
-const MUSHROOMS = [Items.ID.PURPLE_MUSHROOM]
-const MUSHROOM_SEEDS = [Items.ID.PURPLE_MUSHROOM_SEED]
+const MUSHROOMS = []
+const MUSHROOM_SEEDS = [Items.ID.PURPLE_SHROOM_SEED]
 const NATURALS = [Items.ID.DIRT, Items.ID.STONE_PATH]
 const LIGHTS = [Items.ID.BLUE_LAMP]
 
@@ -160,7 +160,7 @@ func get_give_item(give: Give) -> Items.ID:
 		Give.NATURAL:
 			return NATURALS.pick_random()
 		Give.MUSHROOM_FOOD:
-			return Items.ID.MUSHROOM_FOOD
+			return Items.ID.NO_ITEM
 		Give.LIGHT:
 			return LIGHTS.pick_random()
 	return Items.ID.NO_ITEM
